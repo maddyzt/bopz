@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="container mt-4">
       <h4 className="display-4 text-center mb-4">
-      <i class="mx-4 fa-solid fa-microphone-lines"></i>Start Bopping
+      <i className="mx-4 fa-solid fa-microphone-lines"></i>Start Bopping
       </h4>
       <Shazam />
     </div>

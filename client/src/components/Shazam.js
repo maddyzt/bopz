@@ -42,7 +42,7 @@ const Shazam = () => {
         <input type="file" className="custom-file-input" id="customFile" onChange={onChange} />
         <label className="custom-file-label" htmlFor="customFile">{fileName}</label>
       </div>
-      <input type="submit" value="Upload" className="btn btn-primary btn-block mt-4" />     
+      <input type="submit" value="Listen" className="btn btn-primary btn-block mt-4" />     
       </form>
     </Fragment>
   )

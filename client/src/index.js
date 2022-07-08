@@ -4,15 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Profile from "./routes/profile";
-import About from "./routes/about";
+import Profile from "./components/Profile";
+import About from "./components/About";
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")

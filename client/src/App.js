@@ -13,7 +13,8 @@ function App() {
       <nav>
         <Shazam />
         <Link to="/profile">Profile</Link> |{" "}
-        <Link to="/about">About Us</Link>
+        <Link to="/about">About Us</Link> |{" "}
+        <Link to="/">Home</Link>
       </nav>
       <Outlet />
     </div>

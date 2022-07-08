@@ -1,10 +1,10 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios'
 
-const Shazam = () => {
+const Shazam = (props) => {
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('Choose Song');
-  const [uploadedFile, setUploadedFile] = useState({});
+  const [songInfo, setSongInfo] = useState({});
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -28,10 +28,16 @@ const Shazam = () => {
     
     axios.request(options).then(function (response) {
       console.log(response.data);
+      setSongInfo(response.data.track);
     }).catch(function (error) {
       console.error(error);
     });
   };
+
+  let songName = songInfo.title;
+  let songArtist = songInfo.subtitle;
+  // not working // let albumArt = songInfo.images.coverart;
+  let songString = songName + ' by ' + songArtist
 
   return (
     <div className="container mt-4">
@@ -46,10 +52,13 @@ const Shazam = () => {
       </div>
       <input type="submit" value="Listen" className="btn btn-primary btn-block mt-4" />     
       </form>
+      <div>
+      {songName && songArtist && songString}
+      </div>
     </Fragment>
     </div>
   )
 
 }
 
-export default Shazam
+export default Shazam;

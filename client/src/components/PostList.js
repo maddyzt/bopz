@@ -1,9 +1,9 @@
+import PostListItem from "./PostListItem"
+
 const PostList = () => {
 
   return (
-    <div>
-      This is a div
-    </div>
+    <PostListItem />
   )
 
 }

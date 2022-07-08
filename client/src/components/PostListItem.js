@@ -1,8 +1,9 @@
+
 const PostListItem = () => {
 
   return (
     <div>
-      This is a div
+      {/* {songName && songArtist && songString} */}
     </div>
   )
 

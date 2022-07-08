@@ -35,6 +35,7 @@ const Shazam = () => {
       console.log(response.data);
       const post = {
         id: response.data.tagid,
+        songURL: response.data.track.url,
         songName: response.data.track.title,
         songArtist: response.data.track.subtitle
       }

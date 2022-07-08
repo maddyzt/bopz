@@ -1,8 +1,10 @@
+import "./PostListItem.css";
+
 const PostListItem = (props) => {
   let songString = `${props.songName} by ${props.songArtist}`;
   
   return (
-    <div>
+    <div className="post-box">
       {props.songName && props.songArtist && songString}
     </div>
   )

@@ -7,12 +7,9 @@ module.exports = (db) => {
   router.post('/song', (req, res) => {
     console.log('this is the feed/song endpoint', req.body)
     // if (res.body.id)
-    db.query(
-      `
-      INSERT INTO songs (song_name, song_artist) 
-      VALUES (${req.body.songName}, ${req.body.artistName});
-      `
-    )
+    queryString = `INSERT INTO songs (song_name, song_artist) 
+    VALUES ($1, $2);`
+    db.query(queryString, [req.body.songName, req.body.songArtist])
     .catch(err => {
       console.log(err);
     })

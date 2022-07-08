@@ -5,7 +5,7 @@ const router = require('express').Router();
 module.exports = (db) => {
 
   router.post('/song', (req, res) => {
-    // console.log('this is the feed/song endpoint', req.body)
+    // only adds the song to the db if it does not exist yet
 
     db.query(
     `SELECT * FROM songs WHERE song_url = $1;`, [req.body.songURL]

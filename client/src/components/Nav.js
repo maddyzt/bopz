@@ -1,9 +1,9 @@
 const Nav = () => {
 
   return (
-    <div>
+    <nav>
       This is a div
-    </div>
+    </nav>
   )
 
 }

@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios'
 import PostList from './PostList';
+import "./Shazam.css";
 
 const Shazam = () => {
   const [file, setFile] = useState('');

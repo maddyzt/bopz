@@ -1,9 +1,9 @@
-
-const PostListItem = () => {
+const PostListItem = (props) => {
 
   return (
     <div>
-      {/* {songName && songArtist && songString} */}
+      {props.songName} 
+      {props.songArtist}
     </div>
   )
 

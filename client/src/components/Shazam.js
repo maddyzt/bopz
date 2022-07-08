@@ -1,10 +1,11 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios'
+import PostList from './PostList';
 
 const Shazam = (props) => {
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('Choose Song');
-  const [songInfo, setSongInfo] = useState({});
+  const [posts, setPosts] = useState([]);
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -25,19 +26,26 @@ const Shazam = (props) => {
       },
       data: formData
     };
+
+    const persistPost = async (post) => {
+      axios.post('http://localhost:8080/feed/post', post)
+    };
     
     axios.request(options).then(function (response) {
       console.log(response.data);
-      setSongInfo(response.data.track);
+      const post = {
+        id: response.data.tagid,
+        songName: response.data.track.title,
+        songArtist: response.data.track.subtitle
+      }
+      posts.push(post);
+      setPosts(posts);
+      console.log(posts);
+      await persistPost(post);
     }).catch(function (error) {
       console.error(error);
     });
   };
-
-  let songName = songInfo.title;
-  let songArtist = songInfo.subtitle;
-  // not working // let albumArt = songInfo.images.coverart;
-  let songString = songName + ' by ' + songArtist
 
   return (
     <div className="container mt-4">
@@ -52,10 +60,9 @@ const Shazam = (props) => {
       </div>
       <input type="submit" value="Listen" className="btn btn-primary btn-block mt-4" />     
       </form>
-      <div>
-      {songName && songArtist && songString}
-      </div>
     </Fragment>
+    <PostList 
+    posts={posts}/>
     </div>
   )
 

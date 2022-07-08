@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import axios from 'axios'
 import PostList from './PostList';
 
-const Shazam = (props) => {
+const Shazam = () => {
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('Choose Song');
   const [posts, setPosts] = useState([]);
@@ -28,10 +28,10 @@ const Shazam = (props) => {
     };
 
     const persistPost = async (post) => {
-      axios.post('http://localhost:8080/feed/post', post)
+      axios.post('http://localhost:8080/feed/song', post)
     };
     
-    axios.request(options).then(function (response) {
+    axios.request(options).then(async function (response) {
       console.log(response.data);
       const post = {
         id: response.data.tagid,

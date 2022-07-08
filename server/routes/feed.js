@@ -1,23 +1,31 @@
+const { response } = require('../app');
+
 const router = require('express').Router();
 
 module.exports = (db) => {
-  // all routes will go here 
-  router.post('/upload', (req, res) => {
-    if (req.files === null) {
-      return res.status(400).json({msg: 'No file uploaded'});
-    }
 
-    const file = req.files.file;
+  router.post('/song', (req, res) => {
+    // console.log('this is the feed/song endpoint', req.body)
 
-    file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-      }
+    db.query(
+    `SELECT * FROM songs WHERE song_url = $1;`, [req.body.songURL]
+    )
+    .then(data => {
+      console.log('songexists', data)
 
-      res.json({ fileName: file.name, filePath: `/uploads/${file.name}`});
+      if (!data.rows[0]) {
+
+      console.log ('db query empty, adding song')
+
+      queryString = `INSERT INTO songs (song_name, song_artist, song_url) 
+      VALUES ($1, $2, $3);`
+      db.query(queryString, [req.body.songName, req.body.songArtist, req.body.songURL])
+
+    .catch(err => {
+      console.log(err);
     })
-  });
+  }})
+})
 
   return router;
 }

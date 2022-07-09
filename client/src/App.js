@@ -11,11 +11,11 @@ function App() {
   return (
     <div>
       <nav>
-        <Shazam />
         <Link to="/profile">Profile</Link> |{" "}
         <Link to="/about">About Us</Link> |{" "}
         <Link to="/">Home</Link>
       </nav>
+      <Shazam />
       <Outlet />
     </div>
   );

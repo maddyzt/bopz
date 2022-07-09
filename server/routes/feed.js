@@ -24,7 +24,7 @@ module.exports = (db) => {
       // insert into the posts table, getting the most recent song for now...
       let queryStringPost = `INSERT INTO posts (song_id, user_id) 
       VALUES ((SELECT id FROM songs ORDER BY id DESC LIMIT 1), $1);`
-      console.log('hi')
+
       // hard coding the user ID for now
       db.query(queryStringPost, [1])
     .catch(err => {

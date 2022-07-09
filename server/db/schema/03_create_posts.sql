@@ -5,5 +5,5 @@ CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id integer REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   song_id integer REFERENCES songs(id) ON DELETE CASCADE NOT NULL,
-  likes INTEGER NOT NULL
+  likes INTEGER
 );

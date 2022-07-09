@@ -14,7 +14,8 @@ function App() {
         <Shazam />
         <Link to="/profile">Profile</Link> |{" "}
         <Link to="/about">About Us</Link> |{" "}
-        <Link to="/">Home</Link>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/login">Login</Link>
       </nav>
       <Outlet />
     </div>

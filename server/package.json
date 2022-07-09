@@ -19,7 +19,8 @@
     "morgan": "~1.9.1",
     "pg": "^8.7.3",
     "react-router-dom": "^6.3.0",
-    "react-user-profile": "^1.0.3"
+    "react-user-profile": "^1.0.3",
+    "spotify-web-api-node": "^5.0.2"
   },
   "devDependencies": {
     "concurrently": "^7.2.2",

@@ -17,14 +17,14 @@ module.exports = (db) => {
 
       console.log ('db query empty, adding song')
 
-      let queryString = `INSERT INTO songs (song_name, song_artist, song_url) 
+      let queryString = `INSERT INTO songs (song_name, song_artist, song_url)
       VALUES ($1, $2, $3);`
       db.query(queryString, [req.body.songName, req.body.songArtist, req.body.songURL])
-      
+
     .catch(err => {
       console.log(err);
     })
-      } 
+      }
     })
   })
 

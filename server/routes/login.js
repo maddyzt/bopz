@@ -3,38 +3,37 @@ const router = require('express').Router();
 
 const SpotifyWebApi = require('spotify-web-api-node');
 
-const scopes = [
-  'ugc-image-upload',
-  'user-read-playback-state',
-  'user-modify-playback-state',
-  'user-read-currently-playing',
-  'streaming',
-  'app-remote-control',
-  'user-read-email',
-  'user-read-private',
-  'playlist-read-collaborative',
-  'playlist-modify-public',
-  'playlist-read-private',
-  'playlist-modify-private',
-  'user-library-modify',
-  'user-library-read',
-  'user-top-read',
-  'user-read-playback-position',
-  'user-read-recently-played',
-  'user-follow-read',
-  'user-follow-modify'
-];
+module.exports = () => {
+
+  const scopes = [
+    'ugc-image-upload',
+    'user-read-playback-state',
+    'user-modify-playback-state',
+    'user-read-currently-playing',
+    'streaming',
+    'app-remote-control',
+    'user-read-email',
+    'user-read-private',
+    'playlist-read-collaborative',
+    'playlist-modify-public',
+    'playlist-read-private',
+    'playlist-modify-private',
+    'user-library-modify',
+    'user-library-read',
+    'user-top-read',
+    'user-read-playback-position',
+    'user-read-recently-played',
+    'user-follow-read',
+    'user-follow-modify'
+  ];
 
 
-// credentials are optional
+  // credentials are optional
 const spotifyApi = new SpotifyWebApi({
   clientId: 'a18068c5cef44a94a879d8455bf4c855',
   clientSecret: '4fd794840f1c4c2487a292ba8db7c020',
-  redirectUri: 'http://localhost:3000/callback'
+  redirectUri: 'http://localhost:8000/callback'
 });
-
-
-module.exports = () => {
 
   router.get('/', (req, res) => {
     res.redirect(spotifyApi.createAuthorizeURL(scopes));
@@ -44,6 +43,7 @@ module.exports = () => {
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
+    console.log("Callback was called");
 
     if (error) {
       console.error('Callback Error:', error);
@@ -83,6 +83,6 @@ module.exports = () => {
         res.send(`Error getting Tokens: ${error}`);
       });
   });
-  
+
   return router;
 }

@@ -4,6 +4,7 @@ import PostList from './PostList';
 import "./Shazam.css";
 
 const Shazam = () => {
+
   // set states
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('Choose Song');
@@ -48,9 +49,9 @@ const Shazam = () => {
         songArtist: response.data.track.subtitle
       }
       // add object to posts array
-      posts.push(post);
+      let newPosts = [...posts, post];
       // set posts state
-      setPosts(posts);
+      setPosts(newPosts);
       console.log(posts);
       // post to song endpoint
       await persistPost(post);

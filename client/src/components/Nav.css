@@ -1,0 +1,25 @@
+.bopz-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 7%;
+  font-size: 18px;
+}
+
+.bopz-nav ul {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.nav-link, .nav-link:link {
+  color: white;
+}
+
+
+.logo {
+  font-size: 24px;
+  margin: 0.5em;
+}

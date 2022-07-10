@@ -18,15 +18,17 @@ module.exports = (db) => {
 
       // insert into the songs table
       let queryStringSong = `INSERT INTO songs (song_name, song_artist, song_url)
-      VALUES ($1, $2, $3);`
-      db.query(queryStringSong, [req.body.songName, req.body.songArtist, req.body.songURL]);
-
+      VALUES ($1, $2, $3) RETURNING *;`
+      db.query(queryStringSong, [req.body.songName, req.body.songArtist, req.body.songURL])
+      .then(data =>{
       // insert into the posts table, getting the most recent song for now...
+      console.log(data)
+      console.log(data.rows[0])
       let queryStringPost = `INSERT INTO posts (song_id, user_id)
-      VALUES ((SELECT id FROM songs ORDER BY id DESC LIMIT 1), $1);`
-
+      VALUES ($1, $2);`
       // hard coding the user ID for now
-      db.query(queryStringPost, [1])
+      db.query(queryStringPost, [data.rows[0].id, 1])
+      })
     .catch(err => {
       console.log(err);
     })

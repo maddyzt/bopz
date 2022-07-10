@@ -121,15 +121,14 @@ const Shazam = () => {
 
 
   return (
-    <div className="container mt-4">
+    <div className="shazam-container">
     <Fragment>
-    <h4 className="display-4 text-center mb-4">
-    <i className="mx-4 fa-solid fa-microphone-lines"></i>Start Bopping
-    </h4>
+      <div className="button-container">
      <form>
-      <input type="submit" value="Listen" className="btn btn-primary btn-block mt-4 listen" />     
-      <input type="submit" value="Stop" className="btn btn-primary btn-block mt-4 stop" />     
+      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" />     
+      <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />     
       </form>
+      </div>
     </Fragment>
     <PostList 
     posts={posts}/>

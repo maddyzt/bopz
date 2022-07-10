@@ -1,0 +1,17 @@
+.shazam-container {
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+
+.bop-btn {
+  background-color: lightskyblue;
+  border-color: lightskyblue;
+  margin: 1em;
+}

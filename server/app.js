@@ -9,7 +9,7 @@ const db = require('./configs/db.config');
 // cors
 const cors=require("cors");
 const corsOptions ={
-   origin:'*',
+   origin:'http://localhost:3000',
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
@@ -21,7 +21,7 @@ const loginRouter = require('./routes/login');
 
 const app = express();
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.use(logger('dev'));
 app.use(express.json());

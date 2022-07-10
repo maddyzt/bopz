@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { Fragment, useEffect, useState } from 'react';
 
+
 let Login = () => {
+
+
 
   // let [click, setClick] = useState(false)
 
@@ -10,16 +13,16 @@ let Login = () => {
   // react router (is a wrapper, not dealing with window location object directly)
 
   //useNavigate(used to go to URLs)
-  let change = () => {
-    console.log('First')
-   return axios.get('http://localhost:8000/login')
-    .then((res) => {
-      console.log('successful redirect!')
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
+  // let change = () => {
+  //   console.log('First')
+  //  return axios.get('/login')
+  //   .then((res) => {
+  //     console.log('successful redirect!')
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+  // }
 
 // With params
   // const change = () => {
@@ -54,9 +57,9 @@ let Login = () => {
 
   return (
     <Fragment>
-      {/* <button href = 'http://localhost:8000/login'> Login to Spotify </button> */}
+      <a href = 'http://localhost:8000/login'> Login to Spotify </a>
       {/* <button onClick={() => setClick(true)}> Login to Spotify </button> */}
-      <button onClick={change}> Login to Spotify </button>
+      {/* <button onClick={change}> Login to Spotify </button> */}
 
     </Fragment>
 

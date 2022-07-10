@@ -3,7 +3,10 @@ const router = require('express').Router();
 
 const SpotifyWebApi = require('spotify-web-api-node');
 
+
+
 module.exports = () => {
+
 
   // User data Spotify wants to retrieve
   const scopes = [
@@ -33,7 +36,7 @@ module.exports = () => {
 const spotifyApi = new SpotifyWebApi({
   clientId: 'a18068c5cef44a94a879d8455bf4c855',
   clientSecret: '4fd794840f1c4c2487a292ba8db7c020',
-  redirectUri: 'http://localhost:3000/callback'
+  redirectUri: 'http://localhost:3000'
 });
 
   router.get('/', (req, res) => {
@@ -42,7 +45,7 @@ const spotifyApi = new SpotifyWebApi({
   });
 
 // Redirect after
-  router.get('/callback', (req, res) => {
+  router.get('http://localhost:3000', (req, res) => {
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;

@@ -5,6 +5,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 
 module.exports = () => {
 
+  // User data Spotify wants to retrieve
   const scopes = [
     'ugc-image-upload',
     'user-read-playback-state',
@@ -32,13 +33,15 @@ module.exports = () => {
 const spotifyApi = new SpotifyWebApi({
   clientId: 'a18068c5cef44a94a879d8455bf4c855',
   clientSecret: '4fd794840f1c4c2487a292ba8db7c020',
-  redirectUri: 'http://localhost:8000/callback'
+  redirectUri: 'http://localhost:3000/callback'
 });
 
   router.get('/', (req, res) => {
+    console.log('Reached server route')
     res.redirect(spotifyApi.createAuthorizeURL(scopes));
   });
 
+// Redirect after
   router.get('/callback', (req, res) => {
     const error = req.query.error;
     const code = req.query.code;

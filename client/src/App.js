@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Shazam from './components/Shazam';
+import Login from './components/Login';
 
 import { Outlet, Link } from "react-router-dom";
 
@@ -15,7 +16,7 @@ function App() {
         <Link to="/profile">Profile</Link> |{" "}
         <Link to="/about">About Us</Link> |{" "}
         <Link to="/">Home</Link> |{" "}
-        <Link to="/login">Login</Link>
+        <Login />
       </nav>
       <Outlet />
     </div>

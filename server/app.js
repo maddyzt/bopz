@@ -17,7 +17,7 @@ const corsOptions ={
 const indexRouter = require('./routes/index');
 const feedRouter = require('./routes/feed');
 const profileRouter = require('./routes/profile');
-const loginRouter = require('./routes/login')
+const loginRouter = require('./routes/login');
 
 const app = express();
 
@@ -29,9 +29,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', indexRouter());
 app.use('/feed', feedRouter(db));
 app.use('/profile', profileRouter(db));
-app.use('/login', loginRouter)
+app.use('/login', loginRouter())
 
 module.exports = app;

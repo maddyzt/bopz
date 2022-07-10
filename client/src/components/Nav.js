@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Nav.css";
+import Login from "./Login";
 
 const Nav = () => {
 
@@ -12,6 +13,7 @@ const Nav = () => {
       <Link className="nav-link" to="/about">About Us</Link>
       <Link className="nav-link" to="/profile">Profile</Link>
       <Link className="nav-link" to="/">Logout</Link>
+      <Login />
       </ul>
     </nav>
   )

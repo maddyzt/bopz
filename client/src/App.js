@@ -5,7 +5,6 @@ import Shazam from './components/Shazam';
 import { Outlet, Link } from "react-router-dom";
 
 import PostList from './components/PostList';
-// import './scripts/recordAudio';
 
 function App() {
 

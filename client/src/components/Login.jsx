@@ -57,7 +57,7 @@ let Login = () => {
 
   return (
     <li>
-      <a href = 'http://localhost:8000/login'> Login to Spotify </a>
+      <a href = 'http://localhost:8080/login'> Login to Spotify </a>
       {/* <button onClick={() => setClick(true)}> Login to Spotify </button> */}
       {/* <button onClick={change}> Login to Spotify </button> */}
 

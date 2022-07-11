@@ -51,7 +51,7 @@ const Shazam = () => {
             let data = await sendAudioFile(new Blob(chunks));
 
             if (data.matches && data.matches.length !== 0) {
-              mediaRecorder.stop();
+              // mediaRecorder.stop();
               record.disabled = false;
               record.style.background = "";
               record.style.color = "";
@@ -150,7 +150,7 @@ const Shazam = () => {
         songArtist: data.track.subtitle
       };
       // add object to posts array
-      let newPosts = [...posts, post];
+      let newPosts = [...posts, post].reverse();
       // set posts state
       setPosts(newPosts); 
       // post to song endpoint

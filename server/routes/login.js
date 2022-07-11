@@ -44,7 +44,7 @@ const spotifyApi = new SpotifyWebApi({
     res.redirect(spotifyApi.createAuthorizeURL(scopes));
   });
 
-// Redirect after
+// Redirect back to homepage after successful login
   router.get('http://localhost:3000', (req, res) => {
     const error = req.query.error;
     const code = req.query.code;

@@ -3,6 +3,7 @@ const { response } = require('../app');
 const router = require('express').Router();
 
 module.exports = (db) => {
+
   // the song endpoint adds Shazamed song to the songs table and posts table
   router.post('/song', (req, res) => {
 
@@ -35,6 +36,15 @@ module.exports = (db) => {
       }
     })
   })
+
+  router.get('/user', (req, res) => {
+    console.log('endpoint reached')
+    queryString = `SELECT * FROM users WHERE id = 1;`
+    db.query(queryString)
+    .then(data => {
+      res.json(data);
+    })
+  });
 
   return router;
 }

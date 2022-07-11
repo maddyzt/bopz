@@ -6,8 +6,22 @@ import { useEffect } from 'react';
 
 
 const Shazam = () => {
-
   const apiKey = process.env.REACT_APP_API_KEY;
+
+  // get user data 
+  let userData = {};
+  const getUserData = () => {
+    axios.get('http://localhost:8080/feed/user')
+    .then((response) => {
+      console.log('response reached')
+      userData = {
+        id: response.data.rows[0].id,
+        username: response.data.rows[0].username
+      }
+    })
+  }
+
+  getUserData();
 
   useEffect(() => {
     // target the listen/stop buttons
@@ -138,7 +152,6 @@ const Shazam = () => {
     console.log('response', response);
     return response.data;
   }
-
     
     const persistToDatabase = async (data) => {
 
@@ -147,7 +160,8 @@ const Shazam = () => {
         id: data.tagid,
         songURL: data.track.url,
         songName: data.track.title,
-        songArtist: data.track.subtitle
+        songArtist: data.track.subtitle,
+        username: userData.username
       };
       // add object to posts array
       let newPosts = [...posts, post].reverse();
@@ -155,7 +169,7 @@ const Shazam = () => {
       setPosts(newPosts); 
       // post to song endpoint
       await persistPost(post);
-      console.log(posts);
+      // console.log(posts);
     } catch(err) {
       console.log(err)
     }
@@ -166,7 +180,7 @@ const Shazam = () => {
   const persistPost = async (post) => {
     axios.post('http://localhost:8080/feed/song', post)
   };
-    
+  
 
 
   return (

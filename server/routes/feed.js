@@ -37,6 +37,10 @@ module.exports = (db) => {
     })
   })
 
+  router.post('/likes', (req, res) => {
+    console.log(req.body);
+  })
+
   router.get('/user', (req, res) => {
     console.log('endpoint reached')
     queryString = `SELECT * FROM users WHERE id = 1;`

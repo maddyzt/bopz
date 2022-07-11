@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import axios from "axios";
 import "./PostListItem.css";
 
 const PostListItem = (props) => {
   let songString = `${props.songName} by ${props.songArtist}`;
+  const [likes, setLikes] = useState(0);
 
+  const addLike = () => {
+    setLikes(likes + 1);
+    axios.post('http://localhost:8080/feed/likes', likes)
+  };
+
+   
   return (
     <article className="post-box">
       <header className="post-header">
@@ -13,9 +21,7 @@ const PostListItem = (props) => {
       {props.songName && props.songArtist && songString}
       </div>
       <footer className="post-footer">
-      <span className="icons">
-        <i className="fa-solid fa-heart heart"></i>
-      </span>
+        <button className="heart-btn" onClick={addLike}>❤️ Likes: {likes}</button>
       </footer>
     </article>
   )

@@ -6,8 +6,6 @@ const SpotifyWebApi = require('spotify-web-api-node');
 
 
 module.exports = () => {
-
-
   // User data Spotify wants to retrieve
   const scopes = [
     'ugc-image-upload',
@@ -83,7 +81,7 @@ const spotifyApi = new SpotifyWebApi({
         );
 
         // Including relevant variables in response so it can be accessed in Login component
-        res.send({access_token, refresh_token, expires_in, state});
+        res.send({access_token, refresh_token, expires_in});
 
         setInterval(async () => {
           const data = await spotifyApi.refreshAccessToken();

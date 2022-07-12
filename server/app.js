@@ -18,7 +18,7 @@ const indexRouter = require('./routes/index');
 const feedRouter = require('./routes/feed');
 const profileRouter = require('./routes/profile');
 const loginRouter = require('./routes/login');
-const userRouter = require('./routes/userInfo');
+const userRouter = require('./routes/user_info');
 
 const app = express();
 

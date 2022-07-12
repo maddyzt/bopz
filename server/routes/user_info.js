@@ -7,16 +7,14 @@ const spotifyApi = new SpotifyWebApi();
 module.exports = () => {
 
   router.get('/', (req, res) => {
-
-    console.log('These are the params for /user:', req.query.token);
-
+    // Each route must set the access token, API fetch will be rejected otherwise
     spotifyApi.setAccessToken(req.query.token);
 
     spotifyApi.getMe()
       .then(
         function (data) {
-          console.log('This is the user email:', data.body.email)
-          res.send(data.email)
+          console.log(data)
+          res.send(data)
         }
       )
   });

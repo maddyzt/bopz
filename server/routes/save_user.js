@@ -14,20 +14,6 @@ module.exports = (db) => {
 
     const testCommand = "INSERT INTO users (username, email) VALUES ($1, $2);"
 
-    // db.query(testCommand, [userName, userEmail])
-    //   .then((data) => {
-    //     console.log('Successfully wrote to database')
-    //   })
-    //   .catch((err)=> {
-    //     console.log(err);
-
-    //   })
-
-    // db.query(check, [userEmail])
-    //   .then((data) => {
-    //     console.log('These are the results: ', data.rows.length)
-    //   })
-
     db.query(check, [userEmail])
       .then((data) => {
         // If results at provided email are empty

@@ -6,7 +6,12 @@ import { useEffect } from 'react';
 
 
 const Shazam = () => {
+  let postId = null;
   const apiKey = process.env.REACT_APP_API_KEY;
+  // set states
+  const [posts, setPosts] = useState([]);
+  const [existingPosts, setExistingPosts] = useState([]);
+  let newPosts = [];
 
   // get user data 
   let userData = {};
@@ -20,8 +25,23 @@ const Shazam = () => {
       }
     })
   }
-
   getUserData();
+
+  const userObject = {
+    username: sessionStorage.getItem("user_name")
+  };
+
+  // this function will take in a user parameter (object)
+  const getPostsByUser = (userObject) => {
+    axios.get('http://localhost:8080/feed/posts', userObject)
+    .then((response) => {
+      // existing posts is an array of posts
+      setExistingPosts(response.data.rows);
+      console.log('existing posts', existingPosts);
+    })
+  }
+  
+  getPostsByUser(userObject);
 
   useEffect(() => {
     // target the listen/stop buttons
@@ -125,10 +145,9 @@ const Shazam = () => {
     } else {
       console.log('getUserMedia not supported on your browser!');
     }
-  })
+  });
 
-  // set states
-  const [posts, setPosts] = useState([]);
+
 
   // function to send audio to shazam api
   const sendAudioFile = async (file) => {
@@ -154,9 +173,8 @@ const Shazam = () => {
   }
     
     const persistToDatabase = async (data) => {
-
       try {
-      const post = {
+      let post = {
         id: data.tagid,
         songURL: data.track.url,
         songName: data.track.title,
@@ -164,7 +182,7 @@ const Shazam = () => {
         username: userData.username
       };
       // add object to posts array
-      let newPosts = [...posts, post].reverse();
+      newPosts = [...posts, post];
       // set posts state
       setPosts(newPosts); 
       // post to song endpoint
@@ -175,13 +193,15 @@ const Shazam = () => {
     }
     }
 
-     
-  // function to post to song endpoint
-  const persistPost = async (post) => {
-    axios.post('http://localhost:8080/feed/song', post)
-  };
-  
-
+    
+    // function to post to song endpoint
+    const persistPost = (post) => {
+      axios.post('http://localhost:8080/feed/song', post)
+      .then((response) => {
+        postId = response.data.rows[0].id
+        console.log('post succesful and postId', postId)
+      })
+    };
 
   return (
     <div className="shazam-container">
@@ -194,7 +214,9 @@ const Shazam = () => {
       </div>
     </Fragment>
     <PostList 
-    posts={posts}/>
+    posts={posts}
+    existingPosts={existingPosts}
+    />
     </div>
   )
 

@@ -37,6 +37,21 @@ module.exports = (db) => {
     })
   })
 
+  router.post('/likes/add', (req, res) => {
+    console.log(req.body);
+  })
+
+  router.post('/likes', (req, res) => {
+    queryParams = [req.body.songName, req.body.songArtist, req.body.username]
+    queryString = `SELECT likes FROM posts WHERE song_id = (SELECT id FROM songs
+      WHERE song_name = $1 AND song_artist = $2) AND user_id = (SELECT id FROM users
+      WHERE username = $3);`
+    db.query(queryString, queryParams)
+    .then(data => {
+      res.json(data);
+    })
+  })
+
   router.get('/user', (req, res) => {
     console.log('endpoint reached')
     queryString = `SELECT * FROM users WHERE id = 1;`

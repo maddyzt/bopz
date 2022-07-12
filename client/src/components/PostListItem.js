@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import "./PostListItem.css";
 import $ from "jquery";
@@ -12,6 +12,7 @@ const PostListItem = (props) => {
     id: props.id,
     likes: likes
   };
+
 
   const dbLikes = () => {
     axios.post('http://localhost:8080/feed/likes', post)

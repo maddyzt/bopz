@@ -7,8 +7,6 @@ const Login = () => {
   // Look for the query string (everything after '?' in URL)
   const code = new URLSearchParams(window.location.search).get("code");
 
-  const [name, setName] = useState("");
-
   const userInfo = () => {
     let sessionToken = sessionStorage.getItem("access_token");
 
@@ -18,7 +16,8 @@ const Login = () => {
       .get("/user", { params: { token: sessionToken } })
       .then((res) => {
         console.log(res.data.body);
-        setName(res.data.body.display_name);
+        // Save user's name to session storage
+        sessionStorage.setItem("user_name", res.data.body.display_name);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +58,7 @@ const Login = () => {
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
       {!sessionStorage.getItem("access_token") && <button onClick={change}> Login to Spotify </button>}
 
-      {sessionStorage.getItem("access_token") && <h5> Logged in as: {name} </h5>}
+      {sessionStorage.getItem("access_token") && <h5> Logged in as: {sessionStorage.getItem("user_name")} </h5>}
 
     </Fragment>
   );

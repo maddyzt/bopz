@@ -10,6 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
+    "comment-box-react": "^1.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -17,6 +18,8 @@
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "pg": "^8.7.3",
+    "react-commentbox": "^3.0.1",
+    "react-comments-section": "^2.0.10",
     "react-router-dom": "^6.3.0",
     "react-user-profile": "^1.0.3",
     "spotify-web-api-node": "^5.0.2"

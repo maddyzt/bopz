@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Profile from "./components/Profile";
 import About from "./components/About";
+import RecentBopz from "./components/RecentBopz";
+
 
 
 const root = ReactDOM.createRoot(
@@ -17,6 +19,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="profile" element={<Profile />} />
       <Route path="about" element={<About />} />
+      <Route path="recentbopz" element={<RecentBopz />} />
     </Routes>
   </BrowserRouter>
 );

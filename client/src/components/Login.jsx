@@ -7,7 +7,8 @@ const Login = () => {
   // Look for the query string (everything after '?' in URL)
   const code = new URLSearchParams(window.location.search).get("code");
 
-  const [login, setLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
 
   const userInfo = () => {
     let sessionToken = sessionStorage.getItem("access_token");
@@ -20,14 +21,31 @@ const Login = () => {
         console.log(res.data.body);
         // Save user's name to session storage
         sessionStorage.setItem("user_name", res.data.body.display_name);
-        setLogin(true);
+        // Save user's email to session storage
+        sessionStorage.setItem("user_email", res.data.body.email);
+        setLoggedIn(true);
       })
       .catch((err) => {
         console.log(err);
       })
   }
 
+  const saveUser = () => {
+
+    return axios
+      // Params sent as third argument (convention)
+      .post("/save_user", {}, { params: { email: sessionStorage.getItem("user_email"), username: sessionStorage.getItem("user_name") } })
+      .then((res) => {
+        console.log("User email successfully updated in database");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+
   useEffect(() => {
+
     if (code) {
       axios.post("/login/callback", { code })
         .then((res) => {
@@ -36,12 +54,18 @@ const Login = () => {
 
           // Hide the query string after successful login
           window.history.pushState({}, null, "/");
+          userInfo();
         })
         .then((res) => {
           userInfo();
-        });
+        })
     }
-  }, [code]);
+
+    if (loggedIn) {
+      saveUser();
+    }
+    
+  }, [code, loggedIn]);
 
   const change = () => {
     return axios
@@ -59,9 +83,9 @@ const Login = () => {
     <Fragment>
 
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
-      {(!sessionStorage.getItem("access_token" || !login)) && <button onClick={change}> Login to Spotify </button>}
+      {(!sessionStorage.getItem("access_token" || !loggedIn)) && <button onClick={change}> Login to Spotify </button>}
 
-      {(sessionStorage.getItem("access_token" || login)) && <h5> Logged in as: {sessionStorage.getItem("user_name")} </h5>}
+      {(sessionStorage.getItem("access_token" || loggedIn)) && <h5> Logged in as: {sessionStorage.getItem("user_name")} </h5>}
 
     </Fragment>
   );

@@ -36,6 +36,6 @@ app.use('/feed', feedRouter(db));
 app.use('/profile', profileRouter(db));
 app.use('/login', loginRouter(db));
 app.use('/user', userRouter());
-app.use('./save_user', saveUserRouter(db));
+app.use('/save_user', saveUserRouter(db));
 
 module.exports = app;

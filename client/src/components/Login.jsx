@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from 'react';
 
 const Login = () => {
 
-  // Looks for the query string (everything after '?' in URL)
+  // Look for the query string (everything after '?' in URL)
   const code = new URLSearchParams(window.location.search).get("code");
 
   const [name, setName] = useState("");
@@ -13,7 +13,8 @@ const Login = () => {
     let sessionToken = sessionStorage.getItem("access_token");
 
     return axios
-      // Pass the session token as a param to /user route, allows for API queries
+      // Pass the session token as a param to /user route, allows for API fetch
+      // Session token must be passed to each route, fetch will be rejected otherwise
       .get("/user", { params: { token: sessionToken } })
       .then((res) => {
         console.log(res.data.body);
@@ -28,7 +29,7 @@ const Login = () => {
     if (code) {
       axios.post("/login/callback", { code })
         .then((res) => {
-          // Save the access_token in session storage (enables queries across routes)
+          // Save the access_token in session storage (enables fetch across routes)
           sessionStorage.setItem("access_token", res.data.access_token);
 
           // Hide the query string after successful login
@@ -55,7 +56,7 @@ const Login = () => {
   return (
     <Fragment>
 
-      {/* // Checks if user is logged in (based on session storage), displays login message accordingly */}
+      {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
       {!sessionStorage.getItem("access_token") && <button onClick={change}> Login to Spotify </button>}
 
       {sessionStorage.getItem("access_token") && <h5> Logged in as: {name} </h5>}

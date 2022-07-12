@@ -19,6 +19,7 @@
     "morgan": "~1.9.1",
     "pg": "^8.7.3",
     "react-commentbox": "^3.0.1",
+    "react-comments-section": "^2.0.10",
     "react-router-dom": "^6.3.0",
     "react-user-profile": "^1.0.3",
     "spotify-web-api-node": "^5.0.2"

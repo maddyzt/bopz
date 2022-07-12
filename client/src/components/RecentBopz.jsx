@@ -1,5 +1,5 @@
 import React from "react";
-import "react-comments-section/dist/index.css";
+// import "react-comments-section/index.css";
 import ReactDOM from "react-dom";
 import "./RecentBopz.css";
 import tweets from "../tweets.json";

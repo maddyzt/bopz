@@ -71,3 +71,4 @@ export default Login;
 
 
 
+// location.reload to refresh the page (use after logout --> delete the session storage)

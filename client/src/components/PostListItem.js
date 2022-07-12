@@ -28,7 +28,7 @@ const PostListItem = (props) => {
 
   dbLikes();
   // const record = document.querySelector(".listen");
-  $(document).ready(function(){
+  $(function(){
     $('.content').on("click", function(){
       $('.content').toggleClass("heart-active")
       $('.text').toggleClass("heart-active")

@@ -5,7 +5,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 
 
 
-module.exports = () => {
+module.exports = (db) => {
   // User data Spotify wants to retrieve
   const scopes = [
     'ugc-image-upload',
@@ -38,24 +38,16 @@ const spotifyApi = new SpotifyWebApi({
 });
 
   router.get('/', (req, res) => {
-    // console.log('Reached server route')
-    // res.redirect(spotifyApi.createAuthorizeURL(scopes));
     res.json(spotifyApi.createAuthorizeURL(scopes));
   });
 
 // Redirect back to homepage after successful login
 
   router.post("/callback", (req, res) => {
-  // router.get('http://localhost:3000', (req, res) => {
-    // const error = req.query.error;
-    // const code = req.query.code;
-    // const state = req.query.state;
-    // console.log("Callback was called");
 
     const error = req.query.error;
     const code = req.body.code;
     const state = req.query.state;
-    console.log(req.body);
 
     if (error) {
       console.error('Callback Error:', error);
@@ -80,7 +72,9 @@ const spotifyApi = new SpotifyWebApi({
           `Sucessfully retreived access token. Expires in ${expires_in} s.`
         );
 
-        // Including relevant variables in response so it can be accessed in Login component
+        // console.log('This is the data:', res.body)
+
+        // Include relevant variables in response so it can be accessed in Login component
         res.send({access_token, refresh_token, expires_in});
 
         setInterval(async () => {

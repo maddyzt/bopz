@@ -19,6 +19,7 @@ const feedRouter = require('./routes/feed');
 const profileRouter = require('./routes/profile');
 const loginRouter = require('./routes/login');
 const userRouter = require('./routes/user_info');
+const saveUserRouter = require('./routes/save_user');
 
 const app = express();
 
@@ -33,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter());
 app.use('/feed', feedRouter(db));
 app.use('/profile', profileRouter(db));
-app.use('/login', loginRouter());
+app.use('/login', loginRouter(db));
 app.use('/user', userRouter());
+app.use('./save_user', saveUserRouter(db));
 
 module.exports = app;

@@ -10,9 +10,8 @@ const PostListItem = (props) => {
 
   const post = {
     id: props.id,
-    likes: likes
+    // likes: likes
   };
-
 
   const dbLikes = () => {
     axios.post('http://localhost:8080/feed/likes', post)

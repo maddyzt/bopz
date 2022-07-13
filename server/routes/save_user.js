@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
-  //Saves user email to database if it doesn't exist
+  //Save user email and name to database if it doesn't exist
   router.post('/', (req, res) => {
 
     let userEmail = req.query.email;

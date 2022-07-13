@@ -70,7 +70,7 @@
   color: white;
 }
 
-.heart.heart-active{
+/* .heart.heart-active{
   animation: animate .8s steps(28) 1;
   background-position: right;
 }
@@ -82,4 +82,4 @@
   100%{
     background-position: right;
   }
-}
+} */

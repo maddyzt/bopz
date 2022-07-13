@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #001142;
+  font-family: "Lato";
   border-bottom: 1px solid white;
   color: white;
   height: 7%;

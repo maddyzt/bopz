@@ -11,44 +11,57 @@ const Shazam = () => {
   // set states
   const [posts, setPosts] = useState([]);
   const [existingPosts, setExistingPosts] = useState([]);
+  const [userData, setUserData] = useState({});
+  // const [loggedIn, setLoggedIn] = useState(false);
+
   let newPosts = [];
-
-  // get user data 
-  let userData = {};
-  const getUserData = () => {
-    axios.get('http://localhost:8080/feed/user')
-    .then((response) => {
-      console.log('response reached')
-      userData = {
-        id: response.data.rows[0].id,
-        username: response.data.rows[0].username
-      }
-    })
-  }
-
-  useEffect(() => {
-    getUserData();
-  }, []);
-  
 
   const userObject = {
     username: sessionStorage.getItem("user_name")
   };
 
-  // this function will take in a user parameter (object)
-  const getPostsByUser = (userObject) => {
-    axios.get('http://localhost:8080/feed/posts', userObject)
+  // if (userObject.username) {
+  //   setLoggedIn(true);
+  // }
+
+  // get user data 
+  
+  const getUserData = (userObject) => {
+    axios.post('http://localhost:8080/feed/user', userObject)
     .then((response) => {
-      // existing posts is an array of posts
-      setExistingPosts(response.data.rows);
-      console.log('existing posts', existingPosts);
+      console.log('getUserData response', response)
+      setUserData({
+        id: response.data.rows[0].id,
+        username: response.data.rows[0].username
+      })
     })
   }
-  
+
+  console.log('userData', userData);
+
   useEffect(() => {
-    getPostsByUser(userObject);
+    getUserData(userObject);
+  }, [posts]);
+
+
+
+  useEffect(() => {
+      getPostsByUser(userObject);
   }, []);
-  
+
+  // this function will take in a user parameter (object)
+  const getPostsByUser = (userObject) => {
+    console.log('get posts by user')
+    axios.post('http://localhost:8080/feed/posts', userObject)
+    .then((response) => {
+      // existing posts is an array of posts
+      console.log('getpostsbyuser response data', response.data);
+      setExistingPosts(response.data.rows);
+
+    })
+  }
+
+  console.log('existing posts', existingPosts);
 
   useEffect(() => {
     // target the listen/stop buttons
@@ -187,6 +200,7 @@ const Shazam = () => {
         songName: data.track.title,
         songArtist: data.track.subtitle,
         username: userData.username,
+        userId: userData.id,
         likes: 0
       };
       // add object to posts array
@@ -195,7 +209,7 @@ const Shazam = () => {
       setPosts(newPosts); 
       // post to song endpoint
       await persistPost(post);
-      // console.log(posts);
+
     } catch(err) {
       console.log(err)
     }
@@ -210,6 +224,8 @@ const Shazam = () => {
         console.log('post succesful and postId', postId)
       })
     };
+
+
 
   return (
     <div className="shazam-container">

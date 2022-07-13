@@ -111,8 +111,9 @@ const Shazam = () => {
               record.style.color = "";
               console.log(mediaRecorder.state);
               console.log("recorder stopped");
-              await persistToDatabase(data);
               stopInterval();
+              await persistToDatabase(data);
+              return;
             }
           }
             setTimeout(()=> recorder.stop(), 5000); // we'll have a 5s media file

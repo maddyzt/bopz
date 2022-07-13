@@ -41,7 +41,7 @@ const Shazam = () => {
 
   useEffect(() => {
     getUserData(userObject);
-  }, []);
+  }, [posts]);
 
 
 

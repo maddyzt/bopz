@@ -7,6 +7,7 @@ module.exports = (db) => {
   // the song endpoint adds Shazamed song to the songs table and posts table
   router.post('/song', (req, res) => {
     let tagId = "";
+    let userId;
     db.query(
     `SELECT * FROM songs WHERE song_url = $1;`, [req.body.songURL]
     )

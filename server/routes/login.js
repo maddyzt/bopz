@@ -90,7 +90,9 @@ const spotifyApi = new SpotifyWebApi({
         console.error('Error getting Tokens:', error);
         res.send(`Error getting Tokens: ${error}`);
       });
-  });
 
+
+  });
+ 
   return router;
 }

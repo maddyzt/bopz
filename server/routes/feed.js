@@ -77,6 +77,7 @@ module.exports = (db) => {
     queryString = `UPDATE posts SET likes = $2 WHERE tag_id = $1 RETURNING *;`
     db.query(queryString, queryParams)
     .then(data => {
+      res.send(data);
       console.log('likes update successful:', data);
     })
     .catch (err => {

@@ -5,7 +5,7 @@ import $ from "jquery";
 
 const PostListItem = (props) => {
   let songString = `${props.songName} by ${props.songArtist}`;
-  const [likes, setLikes] = useState();
+  const [likes, setLikes] = useState(-1);
   const [liked, updateLiked] = useState(false);
 
   const post = {
@@ -16,7 +16,7 @@ const PostListItem = (props) => {
   const dbLikes = () => {
     axios.post('http://localhost:8080/feed/likes', post)
     .then((response) => {
-      console.log('dblikes', response);
+      console.log('dblikes response', response);
       setLikes(response.data.rows[0].likes);
       console.log('after setting likes initially', likes)
     })
@@ -26,11 +26,22 @@ const PostListItem = (props) => {
     dbLikes();
   }, [])
 
-  useEffect(() => {
+  const updateLikes = async () => {
+   try {
+    console.log('update likes post', post)
+    console.log('liked', liked);
+    liked ? post.likes += 1 : post.likes -= 1;
+    await axios.post('http://localhost:8080/feed/likes/update', post);
     setLikes(likes => likes + (liked ? 1 : -1));
-    console.log('likes after update', likes)
-    console.log('posting again');
-    axios.post('http://localhost:8080/feed/likes/update', post)
+   } catch (err) {
+    console.log(err);
+   }
+  }
+
+  useEffect(() => {
+    if (likes !== -1) {
+      updateLikes();
+    }
   }, [liked]);
 
   $(function(){
@@ -55,7 +66,7 @@ const PostListItem = (props) => {
         updateLiked(liked => !liked);
       }}>
       <span className="heart"></span>
-      <span className="numb">{likes}</span>
+      <span className="numb">{likes === -1 ? 0 : likes}</span>
       </span>
       </footer>
     </article>

@@ -17,7 +17,7 @@ const UserProfile = (props) => {
       <div>Likes: {props.likes}</div>
       <div>Following: {props.following}</div>
       <div>Followers: {props.followers}</div>
-      <button className="follow-button" onClick={followUser}>Follow</button>
+      <button className="follow-button">Follow</button>
       </main>
     </div>
   )

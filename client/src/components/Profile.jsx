@@ -8,7 +8,7 @@ import "./Profile.css";
 import { useParams } from 'react-router-dom';
 
 const Profile = () => {
-  const [followData, setFollowData] = useState({});
+  // const [followData, setFollowData] = useState({});
   const [likesData, setLikesData] = useState({});
   const { id } = useParams();
   const profileUser = id;
@@ -17,20 +17,20 @@ const Profile = () => {
     username: id
   }
 
-  const getFollowCounts = () => {
-    axios.post("http://localhost:8080/profile/follows", user)
-    .then((response) => {
-      console.log("get follow counts", response);
-      setFollowData({
-        followed_count: response.data.rows[0].followed_count,
-        follower_count: response.data.rows[0].follower_count
-      });
-    });
-  };
+  // const getFollowCounts = () => {
+  //   axios.post("http://localhost:8080/profile/follows", user)
+  //   .then((response) => {
+  //     console.log("get follow counts", response);
+  //     setFollowData({
+  //       followed_count: response.data.rows[0].followed_count,
+  //       follower_count: response.data.rows[0].follower_count
+  //     });
+  //   });
+  // };
 
-  useEffect(() => {
-    getFollowCounts();
-  }, []);
+  // useEffect(() => {
+  //   getFollowCounts();
+  // }, [followData]);
 
   const getLikes = () => {
     axios.post("http://localhost:8080/profile/likes", user)
@@ -46,8 +46,8 @@ const Profile = () => {
     getLikes();
   }, []);
 
-  let following = followData.follower_count;
-  let followers = followData.followed_count;
+  // let following = followData.follower_count;
+  // let followers = followData.followed_count;
   let likes = likesData.likes_count;
   let username = profileUser;
   const location = "Toronto, CA";
@@ -81,8 +81,8 @@ const Profile = () => {
       <UserProfile 
       username={username}
       likes={likes}
-      following={following}
-      followers={followers}
+      // following={following}
+      // followers={followers}
       location={location}
       />
     <div className="recent-bopz">

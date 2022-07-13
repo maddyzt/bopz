@@ -1,9 +1,10 @@
-import React from "react";
+import { React, Fragment } from "react";
 import RecentBopz from "./RecentBopz";
 // import UserProfile from "react-user-profile";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import UserProfile from './UserProfile';
+import Nav from './Nav';
 import "./Profile.css";
 import { useParams } from 'react-router-dom';
 
@@ -69,6 +70,8 @@ const Profile = () => {
   // ];
 
   return (
+    <Fragment>
+    <Nav />
     <div className="profile">
       {/* <UserProfile
         photo={photo}
@@ -90,6 +93,7 @@ const Profile = () => {
       <RecentBopz />
     </div>
     </div>
+    </Fragment>
   );
 };
 export default Profile;

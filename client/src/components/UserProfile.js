@@ -125,10 +125,11 @@ console.log('following: ', following, 'followers: ', followers);
       <div>Likes: {props.likes}</div>
       <div>Following: {following}</div>
       <div>Followers: {followers}</div>
+      {/* {id = userObject.myUsername ? <div></div> :  */}
       {followedStatus ? 
       <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
-      <button className="follow-button" onClick={updateFollow}>Follow</button>
-      }
+      <button className="follow-button" onClick={updateFollow}>Follow</button>}
+      {/* } */}
       </main>
     </div>
   )

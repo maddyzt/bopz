@@ -5,12 +5,12 @@ import $ from "jquery";
 
 const PostListItem = (props) => {
   let songString = `${props.songName} by ${props.songArtist}`;
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState();
   const [liked, updateLiked] = useState(false);
 
   const post = {
     id: props.id,
-    // likes: likes
+    likes: likes
   };
 
   const dbLikes = () => {
@@ -18,6 +18,7 @@ const PostListItem = (props) => {
     .then((response) => {
       console.log('dblikes', response);
       setLikes(response.data.rows[0].likes);
+      console.log('after setting likes initially', likes)
     })
   }
 

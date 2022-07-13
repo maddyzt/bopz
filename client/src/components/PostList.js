@@ -9,6 +9,7 @@ const PostList = (props) => {
       songName={post.songName}
       songArtist={post.songArtist}
       username={post.username}
+      likes={post.likes}
       />
     )
   })

@@ -25,7 +25,11 @@ const Shazam = () => {
       }
     })
   }
-  getUserData();
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+  
 
   const userObject = {
     username: sessionStorage.getItem("user_name")
@@ -41,7 +45,10 @@ const Shazam = () => {
     })
   }
   
-  getPostsByUser(userObject);
+  useEffect(() => {
+    getPostsByUser(userObject);
+  }, []);
+  
 
   useEffect(() => {
     // target the listen/stop buttons
@@ -179,7 +186,8 @@ const Shazam = () => {
         songURL: data.track.url,
         songName: data.track.title,
         songArtist: data.track.subtitle,
-        username: userData.username
+        username: userData.username,
+        likes: 0
       };
       // add object to posts array
       newPosts = [...posts, post];

@@ -74,10 +74,10 @@ module.exports = (db) => {
   router.post('/likes/update', (req, res) => {
     console.log('update reqbody', req.body)
     queryParams = [req.body.id, req.body.likes]
-    queryString = `UPDATE posts SET likes = $2 WHERE tag_id = $1;`
+    queryString = `UPDATE posts SET likes = $2 WHERE tag_id = $1 RETURNING *;`
     db.query(queryString, queryParams)
     .then(data => {
-      console.log('likes update successful');
+      console.log('likes update successful:', data);
     })
     .catch (err => {
       console.log(err);
@@ -89,7 +89,7 @@ module.exports = (db) => {
     queryString = `SELECT likes FROM posts WHERE tag_id = $1;`
     db.query(queryString, queryParams)
     .then(data => {
-      console.log('post to select all likes is successful')
+      console.log('post to select all likes is successful', data)
       res.json(data);
     })
   })

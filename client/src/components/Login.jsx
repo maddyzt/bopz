@@ -43,7 +43,6 @@ const Login = () => {
       })
   }
 
-
   useEffect(() => {
 
     if (code) {
@@ -56,15 +55,15 @@ const Login = () => {
           window.history.pushState({}, null, "/");
           userInfo();
         })
-        .then((res) => {
-          userInfo();
-        })
+        // .then((res) => {
+        //   userInfo();
+        // })
     }
 
     if (loggedIn) {
       saveUser();
     }
-    
+
   }, [code, loggedIn]);
 
   const change = () => {

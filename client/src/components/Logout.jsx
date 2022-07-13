@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom"
 
+const Logout = (props) => {
 
-const PostListItem = (props) => {
-
+  const endSession = () => {
+    sessionStorage.clear();
+    window.location.href="/";
+  }
 
   return (
-    <Link></Link>
+    <button onClick={endSession}>
+      Logout
+    </button>
   )
 
 }
 
-export default PostListItem
+export default Logout;

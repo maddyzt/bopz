@@ -17,6 +17,10 @@ module.exports = () => {
           res.send(data)
         }
       )
+      .catch((err) => {
+        console.log('This is the error:', err)
+        console.log('This is the token: ', req.query.token)
+      })
   });
 
   return router;

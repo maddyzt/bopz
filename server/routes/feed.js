@@ -13,9 +13,10 @@ module.exports = (db) => {
     // data is the song info for 1 song
     .then(data => {
 
-      // only adds the song to the songs table if it does not exist yet
+      // only adds song to posts table if song exists already
       if (data.rows[0]) {
-
+        userId = req.body.userId;
+        console.log('req body userid', req.body)
         tagId = req.body.id;
         console.log('song exists')
           db.query(`SELECT id FROM songs WHERE song_url = $1;`, [req.body.songURL])
@@ -25,10 +26,8 @@ module.exports = (db) => {
             console.log('after selecting existing song id', data.rows[0])
             let queryStringPost = `INSERT INTO posts (song_id, user_id, tag_id)
             VALUES ($1, $2, $3) RETURNING *;`
-            // hard coding the user ID for now
-            db.query(queryStringPost, [data.rows[0].id, 1, tagId])
+            db.query(queryStringPost, [data.rows[0].id, userId, tagId])
           
-          // insert into the posts table, getting the most recent song for now...
   
           .then(data => {
   
@@ -39,8 +38,9 @@ module.exports = (db) => {
           console.log(err);
         })
       })
-      
+      // adds song to songs and posts table if song does not exist
       } else if (!data.rows[0]) {
+        userId = req.body.userId;
         tagId = req.body.id;
         console.log('song does not exist')
         console.log ('db query empty, adding song');
@@ -49,13 +49,11 @@ module.exports = (db) => {
         VALUES ($1, $2, $3) RETURNING *;`
         db.query(queryStringSong, [req.body.songName, req.body.songArtist, req.body.songURL])
         .then(data => {
-          // insert into the posts table, getting the most recent song for now...
   
           console.log('after insert into songs', data.rows[0])
           let queryStringPost = `INSERT INTO posts (song_id, user_id, tag_id)
           VALUES ($1, $2, $3) RETURNING *;`
-          // hard coding the user ID for now
-          db.query(queryStringPost, [data.rows[0].id, 1, tagId])
+          db.query(queryStringPost, [data.rows[0].id, userId, tagId])
           
   
           .then(data => {
@@ -70,6 +68,16 @@ module.exports = (db) => {
       }
     })
   })
+
+  router.post('/user', (req, res) => {
+    queryParams = [req.body.username]
+    queryString = `SELECT * from users WHERE username = $1;`
+    db.query(queryString, queryParams)
+    .then (data => {
+      console.log('/user data endpoint response', data)
+      res.json(data);
+    })
+  });
 
   router.post('/likes/update', (req, res) => {
     console.log('update reqbody', req.body)
@@ -95,25 +103,25 @@ module.exports = (db) => {
     })
   })
 
-  router.get('/posts', (req, res) => {
-    // queryParams = [req.body.username]
-    // hard coding user for now
+  router.post('/posts', (req, res) => {
+    console.log('username from posts request', req.body.username);
+    queryParams = [req.body.username]
     queryString = `SELECT * FROM posts JOIN songs ON song_id = songs.id JOIN users ON user_id = users.id
-    WHERE user_id = 1;`
-    db.query(queryString)
+    WHERE user_id = (SELECT id FROM users WHERE username = $1);`
+    db.query(queryString, queryParams)
     .then (data => {
       res.json(data);
     })
   })
 
-  router.get('/user', (req, res) => {
-    console.log('user endpoint reached')
-    queryString = `SELECT * FROM users WHERE id = 1;`
-    db.query(queryString)
-    .then(data => {
-      res.json(data);
-    })
-  });
+  // router.get('/user', (req, res) => {
+  //   console.log('user endpoint reached')
+  //   queryString = `SELECT * FROM users WHERE id = 1;`
+  //   db.query(queryString)
+  //   .then(data => {
+  //     res.json(data);
+  //   })
+  // });
 
   return router;
 }

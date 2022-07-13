@@ -1,0 +1,11 @@
+ id |  username  |         email         |                                                  photo                                                   
+----+------------+-----------------------+----------------------------------------------------------------------------------------------------------
+  1 | picklerick | 123@gmail.com         | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  2 | ehhhhh     | 234@gmail.com         | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  3 | hyrule     | 567@gmail.com         | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  4 | dracula    | 8910@gmail.com        | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  5 | plusUltra  | 1112113@gmail.com     | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  6 | plumber79  | 141516@gmail.com      | https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg
+  7 | maddy      | croftongirl@gmail.com | 
+(7 rows)
+

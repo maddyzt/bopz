@@ -1,0 +1,16 @@
+.profile {
+  background-color: #001142;
+  font-family: "Lato";
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: "0 auto";
+  width: "100%"
+}
+
+.recent-bopz {
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid white;
+  border-radius: 4px;
+}

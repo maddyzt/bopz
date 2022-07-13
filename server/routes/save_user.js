@@ -12,8 +12,6 @@ module.exports = (db) => {
     // Insert user info to database
     const command = "INSERT INTO users (username, email) VALUES ($1, $2);";
 
-    const testCommand = "INSERT INTO users (username, email) VALUES ($1, $2);"
-
     db.query(check, [userEmail])
       .then((data) => {
         // If results at provided email are empty
@@ -30,7 +28,7 @@ module.exports = (db) => {
         }
 
         if (data.rows.length > 0) {
-          console.log('Email is present')
+          console.log('Email is present');
         }
       })
       .catch((err) => {

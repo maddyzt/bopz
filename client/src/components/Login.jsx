@@ -55,9 +55,7 @@ const Login = () => {
           window.history.pushState({}, null, "/");
           userInfo();
         })
-        // .then((res) => {
-        //   userInfo();
-        // })
+
     }
 
     if (loggedIn) {
@@ -70,6 +68,7 @@ const Login = () => {
     return axios
       .get("/login")
       .then((res) => {
+        // window.open(res.data, 'test')
         window.location.href = res.data;
         console.log("successful redirect!");
       })

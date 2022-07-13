@@ -9,7 +9,9 @@ const UserProfile = (props) => {
 
   const { id } = useParams();
   console.log('useParams id', id); 
+  let isSameUser;
 
+  // if (id === sessionStorage.getItem("user_name") )
   let userObject = {
     myUsername: sessionStorage.getItem("user_name"),
     friendUsername: id
@@ -125,11 +127,11 @@ console.log('following: ', following, 'followers: ', followers);
       <div>Likes: {props.likes}</div>
       <div>Following: {following}</div>
       <div>Followers: {followers}</div>
-      {/* {id = userObject.myUsername ? <div></div> :  */}
-      {followedStatus ? 
+      {id === userObject.myUsername ? <div></div> : 
+      followedStatus ? 
       <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
-      <button className="follow-button" onClick={updateFollow}>Follow</button>}
-      {/* } */}
+      <button className="follow-button" onClick={updateFollow}>Follow</button>
+      }
       </main>
     </div>
   )

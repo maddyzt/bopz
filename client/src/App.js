@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import Shazam from "./components/Shazam";
 import Nav from "./components/Nav";
-
 import { Outlet, Link } from "react-router-dom";
 
 import PostList from "./components/PostList";

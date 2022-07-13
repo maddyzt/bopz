@@ -1,8 +1,37 @@
 import "./UserProfile.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import { useParams } from 'react-router-dom';
 
 const UserProfile = (props) => {
   const [followedStatus, updateFollowedStatus] = useState();
+  const { id } = useParams();
+  console.log('useParams id', id); 
+
+  let userObject = {
+    myUsername: sessionStorage.getItem("user_name"),
+    friendUsername: id
+  }
+
+  const getFollowedStatus = (userObject) => {
+    axios.post('http://localhost:8080/profile/follow/status', userObject)
+    .then(response => {
+      console.log('getFollowedStatus', response);
+
+      if (response.data.rows[0]) {
+        updateFollowedStatus(true);
+      } else {
+        updateFollowedStatus(false);
+      }
+    })
+  };
+
+  console.log('after followedstatus api call and update', followedStatus)
+  useEffect(() => {
+    getFollowedStatus(userObject)
+  }, []);
+
+
 
   return (
     <div className="user-profile">
@@ -17,7 +46,10 @@ const UserProfile = (props) => {
       <div>Likes: {props.likes}</div>
       <div>Following: {props.following}</div>
       <div>Followers: {props.followers}</div>
+      {followedStatus ? 
+      <button className="follow-button">Unfollow</button> : 
       <button className="follow-button">Follow</button>
+      }
       </main>
     </div>
   )

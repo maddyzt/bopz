@@ -17,7 +17,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="profile/:id" element={<Profile />} />
       <Route path="about" element={<About />} />
       <Route path="recentbopz" element={<RecentBopz />} />
     </Routes>

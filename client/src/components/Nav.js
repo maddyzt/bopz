@@ -4,7 +4,7 @@ import Login from "./Login";
 import Logout from "./Logout";
 
 const Nav = () => {
-
+  let username = sessionStorage.getItem("user_name");
   return (
     <nav className="bopz-nav">
       <div className="logo">
@@ -12,7 +12,7 @@ const Nav = () => {
       </div>
       <ul>
         <Link className="nav-link" to="/about">About Us</Link>
-        <Link className="nav-link" to="/profile">Profile</Link>
+        <Link className="nav-link" to={`/profile/${username}`}>Profile</Link>
         <Login />
         {/* <Link className="nav-link" to="/login">Login</Link> */}
         <Logout />

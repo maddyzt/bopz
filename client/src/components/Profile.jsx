@@ -5,13 +5,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import UserProfile from './UserProfile';
 import "./Profile.css";
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
   const [followData, setFollowData] = useState({});
   const [likesData, setLikesData] = useState({});
+  const { id } = useParams();
+  const profileUser = id;
 
   const user = {
-    username: sessionStorage.getItem("user_name")
+    username: id
   }
 
   const getFollowCounts = () => {
@@ -46,7 +49,7 @@ const Profile = () => {
   let following = followData.follower_count;
   let followers = followData.followed_count;
   let likes = likesData.likes_count;
-  let username = sessionStorage.getItem("user_name");
+  let username = profileUser;
   const location = "Toronto, CA";
 
   // const photo =

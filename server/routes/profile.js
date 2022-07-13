@@ -42,6 +42,20 @@ module.exports = (db) => {
   })
   })
 
+  router.post('/follow/status', (req, res) => {
+    let myUsername = req.body.myUsername;
+    let friendUsername = req.body.friendUsername;
+    console.log('myusername friendusername', myUsername, friendUsername);
+    queryParams = [myUsername, friendUsername];
+    queryString = `SELECT * FROM followers WHERE follower = (SELECT
+      id FROM users WHERE username = $1) AND followed = (SELECT
+      id FROM users WHERE username = $2);`
+    db.query(queryString, queryParams)
+    .then (data => {
+      res.json(data);
+    })
+  })
+
   return router;
 };
 

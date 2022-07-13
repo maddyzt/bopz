@@ -82,11 +82,10 @@ const Profile = () => {
       followers={followers}
       location={location}
       />
-      <div>
-        ---------------------------------------------------
-      </div>
+    <div className="recent-bopz">
       <h2> Recent Bopz </h2>
       <RecentBopz />
+    </div>
     </div>
   );
 };

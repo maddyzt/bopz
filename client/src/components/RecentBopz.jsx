@@ -1,13 +1,32 @@
-import React from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom";
 import "./RecentBopz.css";
-import tweets from "../tweets.json";
+import initalTweets from "../tweets.json";
 import "./MessageInRecentBopz.css";
 import Timeline from "./Timeline";
+import ComposeForm from "./ComposeForm";
+import { nanoid } from "nanoid";
+
+const CURRENT_USER = "Justin Trudeau";
 
 const RecentBopz = () => {
+  const [tweets, setTweets] = useState(initalTweets);
+
+  const handlePostTweet = (content) => {
+    const newTweet = {
+      content,
+      id: nanoid(),
+      created_on: Date(Date.now()),
+      user: CURRENT_USER,
+      comments_count: 0,
+      retweets_count: 0,
+      favorites_count: 0,
+    };
+    setTweets([...tweets, newTweet]);
+  };
   return (
     <div className="app">
+      <ComposeForm onSubmit={handlePostTweet} />
       <div className="separator"></div>
       <Timeline tweets={tweets} />
     </div>

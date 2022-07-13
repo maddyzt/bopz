@@ -31,7 +31,14 @@ const UserProfile = (props) => {
     getFollowedStatus(userObject)
   }, []);
 
-
+  
+  const updateFollow = () => {
+    if (followedStatus) {
+      updateFollowedStatus(false);
+    } else {
+      updateFollowedStatus(true);
+    }
+  }
 
   return (
     <div className="user-profile">
@@ -47,8 +54,8 @@ const UserProfile = (props) => {
       <div>Following: {props.following}</div>
       <div>Followers: {props.followers}</div>
       {followedStatus ? 
-      <button className="follow-button">Unfollow</button> : 
-      <button className="follow-button">Follow</button>
+      <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
+      <button className="follow-button" onClick={updateFollow}>Follow</button>
       }
       </main>
     </div>

@@ -106,7 +106,7 @@ module.exports = (db) => {
   })
 
   router.get('/user', (req, res) => {
-    console.log('endpoint reached')
+    console.log('user endpoint reached')
     queryString = `SELECT * FROM users WHERE id = 1;`
     db.query(queryString)
     .then(data => {

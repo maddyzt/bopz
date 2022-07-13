@@ -1,0 +1,9 @@
+.profile {
+  background-color: #001142;
+  font-family: "Lato";
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: "0 auto";
+  width: "100%"
+}

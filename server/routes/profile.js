@@ -18,6 +18,30 @@ module.exports = (db) => {
     });
   });
 
+  router.post("/follows", (req, res) => {
+    let username = req.body.username;
+    console.log('username reached backend for follows:', username);
+    queryParams = [username]
+    queryString = `SELECT count(follower) AS follower_count, count(followed) AS followed_count FROM followers JOIN users ON follower = users.id WHERE
+    users.id = (SELECT id FROM users WHERE username = $1);`
+    db.query(queryString, queryParams)
+    .then(data => {
+      res.json(data);
+  })
+})
+
+  router.post("/likes", (req, res) => {
+    let username = req.body.username;
+    console.log('username reached backend for likes:', username);
+    queryParams = [username]
+    queryString = `SELECT likes AS likes_count FROM posts WHERE
+    user_id = (SELECT id FROM users WHERE username = $1);`
+    db.query(queryString, queryParams)
+    .then(data => {
+      res.json(data);
+  })
+  })
+
   return router;
 };
 

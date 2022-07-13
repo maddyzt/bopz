@@ -6,5 +6,5 @@ CREATE TABLE posts (
   tag_id text NOT NULL,
   user_id integer REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   song_id integer REFERENCES songs(id) ON DELETE CASCADE NOT NULL,
-  likes INTEGER DEFAULT 0 NOT NULL
+  likes INTEGER DEFAULT 0
 );

@@ -10,6 +10,7 @@ const PostList = (props) => {
       songArtist={post.songArtist}
       username={post.username}
       likes={post.likes}
+      date={post.date}
       />
     )
   })

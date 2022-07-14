@@ -7,6 +7,7 @@ const PostListItem = (props) => {
   let songString = `${props.songName} by ${props.songArtist}`;
   const [likes, setLikes] = useState(-1);
   const [liked, updateLiked] = useState(false);
+  const [date, setDate] = useState();
 
   const post = {
     id: props.id,
@@ -44,6 +45,19 @@ const PostListItem = (props) => {
     }
   }, [liked]);
 
+
+  const getDate = () => {
+    axios.post('http://localhost:8080/feed/date', post)
+    .then((response) => {
+      console.log('getDate', response);
+      setDate(response.data.rows[0].created_at);
+    })
+  }
+  
+  useEffect(() => {
+    getDate();
+  })
+
   $(function(){
     $('.content').on("click", function(){
       $('.content').toggleClass("heart-active")
@@ -62,12 +76,15 @@ const PostListItem = (props) => {
       {props.songName && props.songArtist && songString}
       </div>
       <footer className="post-footer">
-      <span className="content" onClick={function clickLike(liked) {
-        updateLiked(liked => !liked);
-      }}>
-      <span className="heart"></span>
-      <span className="numb">{likes === -1 ? 0 : likes}</span>
-      </span>
+        <div className="post-date">
+        {date ? date : props.date}
+        </div>
+        <div className="content" onClick={function clickLike(liked) {
+          updateLiked(liked => !liked);
+        }}>
+          <span className="heart"></span>
+          <span className="numb">{likes === -1 ? 0 : likes}</span>
+        </div>
       </footer>
     </article>
   )

@@ -104,6 +104,16 @@ module.exports = (db) => {
     })
   })
 
+  router.post('/date', (req, res) => {
+    queryParams = [req.body.id]
+    queryString = `SELECT to_char(created_at AT TIME ZONE 'America/New_York', 'Month DD YYYY HH24:MI') AS created_at FROM posts WHERE tag_id = $1;`
+    db.query(queryString, queryParams)
+    .then(data => {
+      console.log('post to get date', data)
+      res.json(data);
+    })
+  })
+
   router.post('/posts', (req, res) => {
     console.log('username from posts request', req.body.username);
     queryParams = [req.body.username]
@@ -116,6 +126,8 @@ module.exports = (db) => {
     })
   })
 
+  
+  
 
 
   // router.get('/user', (req, res) => {

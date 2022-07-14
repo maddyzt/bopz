@@ -17,7 +17,17 @@
 }
 
 .post-footer {
+  display: flex;
+  flex-direction: row;
   margin-top: 0.5em;
+  justify-content: space-between;
+}
+
+.post-date {
+  display: flex;
+  align-self: flex-end;
+  transform: translate(0%,-50%);
+  margin-left: 0.5em;
 }
 
 .post-header {

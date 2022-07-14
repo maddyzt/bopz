@@ -202,7 +202,8 @@ const Shazam = () => {
         songArtist: data.track.subtitle,
         username: userData.username,
         userId: userData.id,
-        likes: 0
+        likes: 0,
+        date: "Just now"
       };
       // add object to posts array
       newPosts = [...posts, post];

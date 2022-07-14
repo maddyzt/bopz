@@ -3,7 +3,7 @@ import axios from 'axios'
 import PostList from './PostList';
 import "./Shazam.css";
 import { useEffect } from 'react';
-
+import $ from 'jquery';
 
 const Shazam = () => {
   let postId = null;
@@ -91,7 +91,8 @@ const Shazam = () => {
           console.log(mediaRecorder.state);
           console.log("recorder started");
           record.style.background = "red";
-
+          record.style.border = "1px solid red";
+          document.getElementById("recButton").value="Listening...";
           // stop.disabled = false;
           record.disabled = true;
 
@@ -109,6 +110,8 @@ const Shazam = () => {
               record.disabled = false;
               record.style.background = "";
               record.style.color = "";
+              document.getElementById("recButton").value="Start Bopping";
+
               console.log(mediaRecorder.state);
               console.log("recorder stopped");
               stopInterval();
@@ -227,14 +230,12 @@ const Shazam = () => {
       })
     };
 
-
-
   return (
     <div className="shazam-container">
     <Fragment>
       <div className="button-container">
      <form>
-      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" />     
+      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>     
       {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
       </form>
       </div>

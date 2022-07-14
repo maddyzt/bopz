@@ -37,14 +37,14 @@
   display: flex;
   justify-content: flex-start;
   padding: 0.5em;
-  gap: 0.5em;
+  gap: 1em;
 }
 
 .post-user {
   display: flex;
   justify-content: flex-start;
   gap: 0.5em;
-  transform: translate(0%, 30%);
+  transform: translate(0%, 50%);
 }
 
 .post {

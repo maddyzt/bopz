@@ -46,9 +46,9 @@ module.exports = (db) => {
         console.log('song does not exist')
         console.log ('db query empty, adding song');
         // insert into the songs table
-        let queryStringSong = `INSERT INTO songs (song_name, song_artist, song_url)
-        VALUES ($1, $2, $3) RETURNING *;`
-        db.query(queryStringSong, [req.body.songName, req.body.songArtist, req.body.songURL])
+        let queryStringSong = `INSERT INTO songs (song_name, song_artist, song_url, album, cover_art)
+        VALUES ($1, $2, $3, $4, $5) RETURNING *;`
+        db.query(queryStringSong, [req.body.songName, req.body.songArtist, req.body.songURL, req.body.albumName, req.body.coverArt])
         .then(data => {
   
           console.log('after insert into songs', data.rows[0])

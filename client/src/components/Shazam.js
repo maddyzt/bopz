@@ -110,6 +110,7 @@ const Shazam = () => {
               record.disabled = false;
               record.style.background = "";
               record.style.color = "";
+              record.style.border = "lightskyblue";
               document.getElementById("recButton").value="Start Bopping";
 
               console.log(mediaRecorder.state);
@@ -192,11 +193,12 @@ const Shazam = () => {
     // axios request to the shazam api
     
     let response = await axios.request(options);
-    console.log('response', response);
+    console.log('shazam response', response);
     return response.data;
   }
     
     const persistToDatabase = async (data) => {
+      console.log('albumname', data.track.sections[0].metadata[0].text)
       try {
       let post = {
         id: data.tagid,
@@ -206,7 +208,9 @@ const Shazam = () => {
         username: userData.username,
         userId: userData.id,
         likes: 0,
-        date: "Just now"
+        date: "Just now",
+        coverArt: data.track.images.coverart,
+        albumName: data.track.sections[0].metadata[0].text
       };
       // add object to posts array
       newPosts = [...posts, post];

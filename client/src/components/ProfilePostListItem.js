@@ -73,7 +73,12 @@ const ProfilePostListItem = (props) => {
       <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {props.username}</span>
     </header>
     <div className="post">
+    <div className="song-info">
     {props.songName && props.songArtist && songString}
+    </div>
+    <div>
+      {props.albumName}
+    </div>
     </div>
     <footer className="post-footer">
       <div className="post-date">

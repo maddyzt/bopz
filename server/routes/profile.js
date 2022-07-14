@@ -93,6 +93,34 @@ router.post("/followed", (req, res) => {
     })
   })
 
+
+  router.post("/posts", (req, res) => {
+    console.log('req.body.friendUsername', req.body.friendUsername)
+    let username = req.body.friendUsername;
+    queryParams = [username]
+    queryString = `SELECT * FROM posts JOIN songs ON song_id = songs.id JOIN users ON
+    user_id = users.id WHERE user_id = (SELECT id FROM users
+    WHERE username = $1);`
+    db.query(queryString, queryParams)
+    .then(data => {
+      console.log('posts for profile data', data)
+      res.json(data);
+  })
+  })
+
+  router.post("/comments", (req, res) => {
+    console.log('req.body.friendUsername', req.body.friendUsername)
+    let username = req.body.friendUsername;
+    queryParams = [username]
+    queryString = `SELECT * FROM comments JOIN users ON commenter = users.id WHERE commented = (SELECT id FROM users
+    WHERE username = $1);`
+    db.query(queryString, queryParams)
+    .then(data => {
+      console.log('comments for profile data', data)
+      res.json(data);
+  })
+  })
+
   return router;
 };
 

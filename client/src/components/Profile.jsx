@@ -1,15 +1,17 @@
 import { React, Fragment } from "react";
-import RecentBopz from "./RecentBopz";
+import { useParams } from 'react-router-dom';
+// import RecentBopz from "./RecentBopz";
 // import UserProfile from "react-user-profile";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import UserProfile from './UserProfile';
 import Nav from './Nav';
+import ProfilePostList from './ProfilePostList';
+import Comments from './Comments';
 import "./Profile.css";
-import { useParams } from 'react-router-dom';
 
 const Profile = () => {
-  // const [followData, setFollowData] = useState({});
+  const [existingPosts, setExistingPosts] = useState([]);
   const [likesData, setLikesData] = useState({});
   const { id } = useParams();
   const profileUser = id;
@@ -18,20 +20,20 @@ const Profile = () => {
     username: id
   }
 
-  // const getFollowCounts = () => {
-  //   axios.post("http://localhost:8080/profile/follows", user)
-  //   .then((response) => {
-  //     console.log("get follow counts", response);
-  //     setFollowData({
-  //       followed_count: response.data.rows[0].followed_count,
-  //       follower_count: response.data.rows[0].follower_count
-  //     });
-  //   });
-  // };
+  useEffect(() => {
+    getPostsByUser(user);
+  }, []);
 
-  // useEffect(() => {
-  //   getFollowCounts();
-  // }, [followData]);
+  // this function will take in a user parameter (object)
+  const getPostsByUser = (userObject) => {
+    console.log('get posts by user')
+    axios.post('http://localhost:8080/feed/posts', user)
+    .then((response) => {
+      // existing posts is an array of posts
+      console.log('getpostsbyuser response data', response.data);
+      setExistingPosts(response.data.rows);
+    })
+  }
 
   const getLikes = () => {
     axios.post("http://localhost:8080/profile/likes", user)
@@ -47,50 +49,27 @@ const Profile = () => {
     getLikes();
   }, []);
 
-  // let following = followData.follower_count;
-  // let followers = followData.followed_count;
   let likes = likesData.likes_count;
   let username = profileUser;
   const location = "Toronto, CA";
 
-  // const photo =
-  //   "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350";
-  // // const userName = userData.username;
- 
-
-  // const comments = [
-  //   {
-  //     id: 1,
-  //     photo:
-  //       "https://media.istockphoto.com/photos/funny-winking-kitten-picture-id1267021092?k=20&m=1267021092&s=612x612&w=0&h=yzwxZXklHn5NwDTgKmbq2Ojtg3pga6j8K3oT7lLneAY=",
-  //     userName: "Marc Anthony",
-  //     content: "Wow I love all your Bopz!",
-  //     createdAt: 1543858000000,
-  //   },
-  // ];
 
   return (
     <Fragment>
     <Nav />
     <div className="profile">
-      {/* <UserProfile
-        photo={photo}
-        userName={username}
-        location={location}
-        initialFollowingCount={700}
-        initialFollowersCount={4433}
-        initialComments={comments}
-      /> */}
+
       <UserProfile 
       username={username}
       likes={likes}
-      // following={following}
-      // followers={followers}
       location={location}
       />
+      <Comments />
     <div className="recent-bopz">
       <h2> Recent Bopz </h2>
-      <RecentBopz />
+      <ProfilePostList 
+      existingPosts={existingPosts}
+      />
     </div>
     </div>
     </Fragment>

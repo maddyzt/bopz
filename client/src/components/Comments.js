@@ -1,0 +1,102 @@
+import axios from "axios";
+import "./Comments.css";
+import "./PostListItem.css";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+const Comments = () => {
+  const [comments, setComments] = useState({});
+  const { id } = useParams();
+  const user = {
+    friendUsername: id
+  }
+  let comment1 = "";
+  let comment2 = "";
+  let comment3 = "";
+  let commentUser1 = "";
+  let commentUser2 = "";
+  let commentUser3 = "";
+  
+  const getComments = () => {
+    axios.post('http://localhost:8080/profile/comments', user)
+    .then(response => {
+      console.log('getcomments', response);
+      setComments({
+        comment1: response.data.rows[0].comment,        
+        comment2: response.data.rows[1].comment,        
+        comment3: response.data.rows[2].comment,  
+        date1: response.data.rows[0].created_at,      
+        date2: response.data.rows[1].created_at,      
+        date3: response.data.rows[2].created_at,      
+        commentUser1: response.data.rows[0].username,
+        commentUser2: response.data.rows[1].username,
+        commentUser3: response.data.rows[2].username,
+      })
+
+      console.log('comment1', comment1, commentUser1)
+    })
+  }
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+
+  return (
+    <div className="comment-container">
+      <h2>
+      Comments
+      </h2>
+      <article className="post-box">
+      <header className="post-header">
+        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser1}</span>
+      </header>
+      <div className="post">
+        {comments.comment1}
+      </div>
+      <footer className="post-footer">
+        <div className="post-date">
+        {comments.date1}
+        </div>
+      </footer>
+
+      </article>
+      <article className="post-box">
+      <header className="comment-header">
+        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser2}</span>
+        <div className="comment-date">
+        {comments.date2}
+        </div>
+      </header>
+      <div className="post">
+        {comments.comment2}
+      </div>
+      <footer className="post-footer">
+
+      </footer>
+      </article>
+
+      <article className="post-box">
+      <header className="post-header">
+        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser3}</span>
+      </header>
+      <div className="post">
+        {comments.comment3}
+      </div>
+      <footer className="post-footer">
+        <div className="post-date">
+        {comments.date3}
+        </div>
+      </footer>
+      </article>
+
+      <div className="new-comment-container">
+      <input type="text" /> 
+      <button type="submit">Add Comment</button>
+      </div>
+    </div>
+  )
+}
+
+export default Comments;
+

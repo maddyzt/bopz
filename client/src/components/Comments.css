@@ -1,0 +1,30 @@
+.comment-container {
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 0.5em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-comment-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment {
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.comment-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-date {
+  padding: 0.3em;
+}

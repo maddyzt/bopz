@@ -51,37 +51,6 @@ const UserProfile = (props) => {
       })
 
     })
-    // axios.post("http://localhost:8080/profile/following", userObject)
-    // .then((response) => {
-    //   console.log("get follow counts", response);
-    //   if (response.data.rows[0].follower_count) {
-    //     setFollowData({
-    //       ...followData,
-    //       follower_count: response.data.rows[0].follower_count
-    //     });
-    //   } else {
-    //     setFollowData({
-    //       ...followData,
-    //       follower_count: 0
-    //     });
-    //   }
-
-    // });
-    // axios.post("http://localhost:8080/profile/followed", userObject)
-    // .then((response) => {
-    //   console.log("get follow counts", response);
-    //   if (response.data.rows[0].followed_count) {
-    //     setFollowData({
-    //       ...followData, 
-    //       followed_count: response.data.rows[0].followed_count
-    //     })
-    //   } else {
-    //     setFollowData({
-    //       ...followData,
-    //       followed_count: 0
-    //     });
-    //   }
-    // });
   };
 
   useEffect(() => {
@@ -90,8 +59,7 @@ const UserProfile = (props) => {
 
   let following = followData.follower_count;
   let followers = followData.followed_count;
-  // let following = 10;
-  // let followers = 10;
+
 
 console.log('following: ', following, 'followers: ', followers);
   
@@ -117,7 +85,7 @@ console.log('following: ', following, 'followers: ', followers);
   return (
     <div className="user-profile">
       <header className="user-profile-header">
-      <img src="./images/minion.jpeg" alt="img" className="avatar" />
+      <img alt="img" className="avatar" />
       <div className="name-location">
       <h1>{props.username}</h1>
       <h5>{props.location}</h5>

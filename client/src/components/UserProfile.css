@@ -10,8 +10,8 @@
 .user-profile-header {
   display: flex;
   flex-direction: row;
-  border: 1px solid white;
-  border-radius: 4px;
+  /* border: 1px solid white;
+  border-radius: 4px; */
   margin: 0.5em;
   padding: 0.5em;
 }

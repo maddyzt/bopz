@@ -53,9 +53,34 @@
 }
 
 .song-info {
+  color: white;
   font-weight: 700;
   font-size: 20px;
   padding-top: 0.5em;
+}
+
+.song-link {
+  text-decoration: none !important;
+}
+
+.song-link:hover {
+  color: #1CA2F1;
+  text-decoration: none;
+}
+
+/* unvisited link */
+.song-link:link {
+  text-decoration:none;
+}
+
+/* visited link */
+.song-link:visited {
+  text-decoration:none;
+}
+
+/* selected link */
+.song-link:active {
+  text-decoration:none;
 }
 
 .avatar {

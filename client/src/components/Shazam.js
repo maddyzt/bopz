@@ -110,7 +110,7 @@ const Shazam = () => {
               record.disabled = false;
               record.style.background = "";
               record.style.color = "";
-              record.style.border = "lightskyblue";
+              record.style.border = "#1CA2F1";
               document.getElementById("recButton").value="Start Bopping";
 
               console.log(mediaRecorder.state);

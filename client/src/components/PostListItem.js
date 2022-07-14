@@ -9,6 +9,14 @@ const PostListItem = (props) => {
   const [liked, updateLiked] = useState(false);
   const [date, setDate] = useState();
 
+  const getSearchString = (song) => {
+    let newString = song.replace(/ /g,"%20");
+    let searchURL = `https://open.spotify.com/search/${newString}`
+    return searchURL
+  }
+
+  let searchString = getSearchString(props.songName);
+
   const post = {
     id: props.id,
     likes: likes
@@ -79,7 +87,7 @@ const PostListItem = (props) => {
       </header>
       <div className="post">
       <div className="song-info">
-      {props.songName && props.songArtist && songString}
+        <a href={searchString}>{props.songName && props.songArtist && songString}</a>
       </div>
       <div>
       {props.albumName}

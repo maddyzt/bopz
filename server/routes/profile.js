@@ -120,6 +120,16 @@ router.post("/followed", (req, res) => {
       res.json(data);
   })
   })
+  
+  router.get('/:id', (req, res) => {
+    const username = req.params.id;
+    const queryString = `SELECT * FROM users WHERE username = $1;`
+
+    db.query(queryString, [username])
+    .then(data => {
+      res.json(data);
+    })
+  })
 
   return router;
 };

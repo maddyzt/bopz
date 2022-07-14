@@ -3,7 +3,7 @@ const Logout = (props) => {
 
   const endSession = () => {
     sessionStorage.clear();
-    window.location.href="/";
+    window.location.href="/loginpage";
   }
 
   return (

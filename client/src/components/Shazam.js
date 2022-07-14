@@ -198,7 +198,7 @@ const Shazam = () => {
   }
     
     const persistToDatabase = async (data) => {
-      console.log('albumname', data.track.sections[0].metadata[0].text)
+      console.log('persisting to database...')
       try {
       let post = {
         id: data.tagid,
@@ -218,12 +218,10 @@ const Shazam = () => {
       setPosts(newPosts); 
       // post to song endpoint
       await persistPost(post);
-
     } catch(err) {
       console.log(err)
     }
     }
-
     
     // function to post to song endpoint
     const persistPost = (post) => {

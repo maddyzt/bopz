@@ -67,10 +67,15 @@ const ProfilePostListItem = (props) => {
     });
   });
 
+
+  let username = props.username;
+  let initial = username.charAt(0);
+
   return (
   <article className="post-box">
     <header className="post-header">
-      <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {props.username}</span>
+      <div className="avatar">{initial}</div>
+      <span className="post-user">{props.username}</span>
     </header>
     <div className="post">
     <div className="song-info">

@@ -32,14 +32,16 @@
 
 .post-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0.5em;
+  gap: 0.5em;
 }
 
 .post-user {
   display: flex;
   justify-content: flex-start;
   gap: 0.5em;
+  transform: translate(0%, 25%);
 }
 
 .post {
@@ -53,7 +55,21 @@
 .song-info {
   font-weight: 700;
   font-size: 20px;
+  padding-top: 0.5em;
 }
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1CA2F1;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  margin: 0;
+}
+
 
 /* heart css */
 .content{

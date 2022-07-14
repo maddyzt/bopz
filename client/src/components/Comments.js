@@ -41,6 +41,7 @@ const Comments = () => {
     getComments();
   }, []);
 
+  
   return (
     <div className="comment-container">
       <h2>

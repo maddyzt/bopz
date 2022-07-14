@@ -32,13 +32,25 @@
   padding: 0.5em;
 }
 
-.avatar {
+/* .avatar {
   display: inline-block;
   width: 90px;
   height: 90px;
   border-radius: 50%;
 
   object-fit: cover;
+} */
+
+#profileImage {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #1CA2F1;
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 90px;
+  margin: 20px 0;
 }
 
 .follow-button {

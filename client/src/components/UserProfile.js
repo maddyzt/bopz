@@ -2,6 +2,7 @@ import "./UserProfile.css";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import $ from 'jquery';
 
 const UserProfile = (props) => {
   const [followedStatus, updateFollowedStatus] = useState();
@@ -82,12 +83,17 @@ console.log('following: ', following, 'followers: ', followers);
     }
   }
 
+  $(function(){
+    let intial = $('#username').text().charAt(0);
+    let profileImage = $('#profileImage').text(intial);
+  });
+
   return (
     <div className="user-profile">
       <header className="user-profile-header">
-      <img alt="img" className="avatar" />
+      <div id="profileImage"></div>
       <div className="name-location">
-      <h1>{props.username}</h1>
+      <h1 id="username">{props.username}</h1>
       <h5>{props.location}</h5>
       </div>
       </header>

@@ -54,6 +54,9 @@ const Profile = () => {
   const location = "Toronto, CA";
 
 
+
+
+  
   return (
     <Fragment>
     <Nav />

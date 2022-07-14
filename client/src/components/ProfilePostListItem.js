@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import "./PostListItem.css";
+import "./ProfilePostListItem.css";
 import $ from "jquery";
 
 const ProfilePostListItem = (props) => {
@@ -72,7 +73,7 @@ const ProfilePostListItem = (props) => {
   let initial = username.charAt(0);
 
   return (
-  <article className="post-box">
+  <article className="profile-post-box">
     <header className="post-header">
       <div className="avatar">{initial}</div>
       <span className="post-user">{props.username}</span>

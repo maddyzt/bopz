@@ -2,8 +2,11 @@
   border: 1px solid white;
   color: white;
   border-radius: 4px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  margin-right: 2em;
+  margin-left: 2em;
   padding: 0.5em;
-  margin: 1em;
 }
 
 .icons {
@@ -41,7 +44,7 @@
   display: flex;
   justify-content: flex-start;
   gap: 0.5em;
-  transform: translate(0%, 25%);
+  transform: translate(0%, 30%);
 }
 
 .post {
@@ -60,6 +63,7 @@
 }
 
 .song-link {
+  color: white;
   text-decoration: none !important;
 }
 
@@ -68,19 +72,14 @@
   text-decoration: none;
 }
 
-/* unvisited link */
-.song-link:link {
-  text-decoration:none;
+.profile-link {
+  color: white;
+  text-decoration: none !important;
 }
 
-/* visited link */
-.song-link:visited {
-  text-decoration:none;
-}
-
-/* selected link */
-.song-link:active {
-  text-decoration:none;
+.profile-link:hover {
+  color: #1CA2F1;
+  text-decoration: none;
 }
 
 .avatar {
@@ -113,6 +112,10 @@
   height: 60px;
   width: 60px;
   transform: translate(30%,25%);
+}
+
+.heart:hover {
+  color: darkred;
 }
 
 .numb:before{

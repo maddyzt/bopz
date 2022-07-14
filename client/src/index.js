@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./components/Profile";
 import About from "./components/About";
-import RecentBopz from "./components/RecentBopz";
 import LoginPage from "./components/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,7 +15,6 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="profile/:id" element={<Profile />} />
       <Route path="about" element={<About />} />
-      <Route path="recentbopz" element={<RecentBopz />} />
       <Route path="loginpage" element={<LoginPage />} />
     </Routes>
   </BrowserRouter>

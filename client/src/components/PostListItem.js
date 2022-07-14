@@ -18,6 +18,8 @@ const PostListItem = (props) => {
 
   let searchString = getSearchString(props.songName, props.songArtist);
 
+  let profileString = `http://localhost:3000/profile/${props.username}`;
+
   const post = {
     id: props.id,
     likes: likes
@@ -84,11 +86,11 @@ const PostListItem = (props) => {
     <article className="post-box">
       <header className="post-header">
         <div className="avatar">{initial}</div>
-        <span className="post-user" id="username">{props.username}</span>
+        <a href={profileString} className="profile-link"><span className="post-user" id="username">{props.username}</span></a>
       </header>
       <div className="post">
       <div className="song-info">
-        <a className="song-link" href={searchString}  target="_blank">{props.songName && props.songArtist && songString}</a>
+        <a className="song-link" href={searchString} target="_blank">{props.songName && props.songArtist && songString}</a>
       </div>
       <div>
       {props.albumName}

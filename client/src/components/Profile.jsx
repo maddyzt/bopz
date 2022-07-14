@@ -1,7 +1,5 @@
 import { React, Fragment } from "react";
 import { useParams } from 'react-router-dom';
-// import RecentBopz from "./RecentBopz";
-// import UserProfile from "react-user-profile";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import UserProfile from './UserProfile';

@@ -80,17 +80,20 @@ const PostListItem = (props) => {
 
 
   let username = props.username;
-  let initial = username.charAt(0);
+  let initial = username.charAt(0).toUpperCase();
   
   return (
     <article className="post-box">
       <header className="post-header">
+        <div className="avatar-name-container">
         <div className="avatar">{initial}</div>
         <a href={profileString} className="profile-link"><span className="post-user" id="username">{props.username}</span></a>
+        </div>
+        <a href={searchString} target="_blank" className="search-button">Listen on Spotify</a>
       </header>
       <div className="post">
       <div className="song-info">
-        <a className="song-link" href={searchString} target="_blank">{props.songName && props.songArtist && songString}</a>
+        {props.songName && props.songArtist && songString}
       </div>
       <div>
       {props.albumName}

@@ -35,8 +35,14 @@
 
 .post-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0.5em;
+  
+}
+
+.avatar-name-container {
+  display: flex;
+  flex-direction: row;
   gap: 1em;
 }
 
@@ -53,6 +59,16 @@
   justify-content: space-between;
   margin-left: 1%;
   margin-right: 1%;
+}
+
+.search-button{
+  color: white;
+  text-decoration: none !important;
+}
+
+.search-button:hover{
+  color: #1CA2F1;
+  text-decoration: none;
 }
 
 .song-info {

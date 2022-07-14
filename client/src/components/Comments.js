@@ -25,9 +25,9 @@ const Comments = () => {
         comment1: response.data.rows[0].comment,        
         comment2: response.data.rows[1].comment,        
         comment3: response.data.rows[2].comment,  
-        date1: response.data.rows[0].created_at,      
-        date2: response.data.rows[1].created_at,      
-        date3: response.data.rows[2].created_at,      
+        date1: response.data.rows[0].date,      
+        date2: response.data.rows[1].date,      
+        date3: response.data.rows[2].date,      
         commentUser1: response.data.rows[0].username,
         commentUser2: response.data.rows[1].username,
         commentUser3: response.data.rows[2].username,
@@ -41,26 +41,23 @@ const Comments = () => {
     getComments();
   }, []);
 
-
   return (
     <div className="comment-container">
       <h2>
       Comments
       </h2>
       <article className="post-box">
-      <header className="post-header">
+      <header className="comment-header">
         <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser1}</span>
+        <div className="comment-date">
+        {comments.date1}
+        </div>
       </header>
       <div className="post">
         {comments.comment1}
       </div>
-      <footer className="post-footer">
-        <div className="post-date">
-        {comments.date1}
-        </div>
-      </footer>
-
       </article>
+
       <article className="post-box">
       <header className="comment-header">
         <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser2}</span>
@@ -71,23 +68,18 @@ const Comments = () => {
       <div className="post">
         {comments.comment2}
       </div>
-      <footer className="post-footer">
-
-      </footer>
       </article>
 
       <article className="post-box">
-      <header className="post-header">
+      <header className="comment-header">
         <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser3}</span>
+        <div className="comment-date">
+        {comments.date3}
+        </div>
       </header>
       <div className="post">
         {comments.comment3}
       </div>
-      <footer className="post-footer">
-        <div className="post-date">
-        {comments.date3}
-        </div>
-      </footer>
       </article>
 
       <div className="new-comment-container">

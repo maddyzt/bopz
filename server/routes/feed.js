@@ -126,9 +126,17 @@ module.exports = (db) => {
     })
   })
 
-  
-  
 
+  router.post('/myposts', (req, res) => {
+    console.log('username from posts request', req.body.username);
+    queryParams = [req.body.username]
+    queryString = `SELECT * FROM posts JOIN songs ON song_id = songs.id JOIN users ON user_id = users.id
+    WHERE user_id = (SELECT id FROM users WHERE username = $1);`
+    db.query(queryString, queryParams)
+    .then (data => {
+      res.json(data);
+    })
+  })
 
   // router.get('/user', (req, res) => {
   //   console.log('user endpoint reached')

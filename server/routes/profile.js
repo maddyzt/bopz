@@ -112,7 +112,7 @@ router.post("/followed", (req, res) => {
     console.log('req.body.friendUsername', req.body.friendUsername)
     let username = req.body.friendUsername;
     queryParams = [username]
-    queryString = `SELECT * FROM comments JOIN users ON commenter = users.id WHERE commented = (SELECT id FROM users
+    queryString = `SELECT *, to_char(created_at AT TIME ZONE 'America/New_York', 'Month DD YYYY HH24:MI') AS date FROM comments JOIN users ON commenter = users.id WHERE commented = (SELECT id FROM users
     WHERE username = $1);`
     db.query(queryString, queryParams)
     .then(data => {

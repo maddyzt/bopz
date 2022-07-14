@@ -27,7 +27,7 @@ const Profile = () => {
   // this function will take in a user parameter (object)
   const getPostsByUser = (userObject) => {
     console.log('get posts by user')
-    axios.post('http://localhost:8080/feed/posts', user)
+    axios.post('http://localhost:8080/feed/myposts', user)
     .then((response) => {
       // existing posts is an array of posts
       console.log('getpostsbyuser response data', response.data);

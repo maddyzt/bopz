@@ -80,7 +80,7 @@ const Login = (props) => {
 
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
       {(!sessionStorage.getItem("access_token" || !props.loggedIn)) &&
-      <button className="log-button"onClick={change}> Login to Spotify </button>}
+      <button className="log-button"onClick={change}> Login with Spotify </button>}
 
       {(sessionStorage.getItem("access_token" || props.loggedIn)) &&
       <span className="log-button"> Logged in as: <p className="username">{sessionStorage.getItem("user_name")}</p> </span>}

@@ -16,7 +16,10 @@ const Comments = () => {
   let commentUser1 = "";
   let commentUser2 = "";
   let commentUser3 = "";
-  
+  let initial1 = "";
+  let initial2 = "";
+  let initial3 = "";
+
   const getComments = () => {
     axios.post('http://localhost:8080/profile/comments', user)
     .then(response => {
@@ -40,7 +43,7 @@ const Comments = () => {
   useEffect(() => {
     getComments();
   }, []);
-
+  
   
   return (
     <div className="comment-container">
@@ -49,36 +52,36 @@ const Comments = () => {
       </h2>
       <article className="comment-box">
       <header className="comment-header">
-        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser1}</span>
+        <span className="comment-user"><div className="avatar">P</div> {comments.commentUser1}</span>
         <div className="comment-date">
         {comments.date1}
         </div>
       </header>
-      <div className="post">
+      <div className="comment-text">
         {comments.comment1}
       </div>
       </article>
 
       <article className="comment-box">
       <header className="comment-header">
-        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser2}</span>
+        <span className="comment-user"><div className="avatar">P</div> {comments.commentUser2}</span>
         <div className="comment-date">
         {comments.date2}
         </div>
       </header>
-      <div className="post">
+      <div className="comment-text">
         {comments.comment2}
       </div>
       </article>
 
       <article className="comment-box">
       <header className="comment-header">
-        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser3}</span>
+        <span className="comment-user"><div className="avatar">P</div> {comments.commentUser3}</span>
         <div className="comment-date">
         {comments.date3}
         </div>
       </header>
-      <div className="post">
+      <div className="comment-text">
         {comments.comment3}
       </div>
       </article>

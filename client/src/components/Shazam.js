@@ -22,7 +22,7 @@ const Shazam = (props) => {
   useEffect(() => {
     getPostsByUser(userObject);
   }, [props.loggedIn]);
-  
+
   const getUserData = (userObject) => {
     axios.post('http://localhost:8080/feed/user', userObject)
     .then((response) => {
@@ -93,7 +93,7 @@ const Shazam = (props) => {
             const recorder = new MediaRecorder(stream);
             const chunks = [];
             recorder.ondataavailable = e => chunks.push(e.data);
-            recorder.onstop = async (e) => {        
+            recorder.onstop = async (e) => {
 
             let data = await sendAudioFile(new Blob(chunks));
 
@@ -114,15 +114,15 @@ const Shazam = (props) => {
           }
             setTimeout(()=> recorder.stop(), 5000); // we'll have a 5s media file
             recorder.start();
-          
+
           }
 
           const interval = setInterval(recordAudio, 4000);
-          
+
           const stopInterval = () => {
             clearInterval(interval)
           };
-          
+
 
         }
 
@@ -140,8 +140,8 @@ const Shazam = (props) => {
 
         // when stop is clicked, a new blob is created with the audio data
         // mediaRecorder.onstop = (e) => {
-          // const blob = new Blob(chunks, { 
-          //   'type': 'audio/mp3' 
+          // const blob = new Blob(chunks, {
+          //   'type': 'audio/mp3'
           // });
           // // this function sends the audio data to the shazam api
           // sendAudioFile(blob);
@@ -183,12 +183,12 @@ const Shazam = (props) => {
     };
     console.log('sending audio file')
     // axios request to the shazam api
-    
+
     let response = await axios.request(options);
     console.log('shazam response', response);
     return response.data;
   }
-    
+
     const persistToDatabase = async (data) => {
       console.log('persisting to database...')
       try {
@@ -207,14 +207,14 @@ const Shazam = (props) => {
       // add object to posts array
       newPosts = [...posts, post];
       // set posts state
-      setPosts(newPosts); 
+      setPosts(newPosts);
       // post to song endpoint
       await persistPost(post);
     } catch(err) {
       console.log(err)
     }
     }
-    
+
     // function to post to song endpoint
     const persistPost = (post) => {
       axios.post('http://localhost:8080/feed/song', post)
@@ -230,12 +230,12 @@ const Shazam = (props) => {
     <Fragment>
       <div className="button-container">
      <form>
-      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>     
+      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>
       {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
       </form>
       </div>
     </Fragment>
-    <PostList 
+    <PostList
     posts={posts}
     existingPosts={existingPosts}
     />

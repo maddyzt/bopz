@@ -5,7 +5,8 @@ import Logout from "./Logout";
 import SearchBar from "./SearchBar";
 
 const Nav = (props) => {
-  let username = sessionStorage.getItem("user_name");
+  let username = props.user?.name;
+
   return (
     <nav className="bopz-nav">
       <div className="logo">
@@ -20,13 +21,19 @@ const Nav = (props) => {
       <SearchBar />
 
       <ul className="nav-area-right">
-        <Login setLoggedIn={props.setLoggedIn}/>
+        <Login
+          setLoggedIn={props.setLoggedIn}
+          loggedIn={props.loggedIn}
+          setToken={props.setToken}
+          token={props.token}
+          user={props.user}
+          setUser={props.setUser}
+        />
         <Logout />
       </ul>
 
     </nav>
-  )
-
-}
+  );
+};
 
 export default Nav

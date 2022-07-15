@@ -6,9 +6,9 @@ const spotifyApi = new SpotifyWebApi();
 
 module.exports = () => {
 
-  router.get('/', (req, res) => {
+  router.post('/', (req, res) => {
     // Each route must set the access token, API fetch will be rejected otherwise
-    spotifyApi.setAccessToken(req.query.token);
+    spotifyApi.setAccessToken(req.body.sessionToken);
 
     spotifyApi.getMe()
       .then(

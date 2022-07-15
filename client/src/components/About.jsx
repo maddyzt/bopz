@@ -71,7 +71,7 @@ const About = () => {
               Adam Yiu (UTSC grad)
             </Box>
             <Box fontFamily="Helvetica" fontWeight={350}>
-              Adam is a next level critical thinker, hes the API and login
+              Adam is a next level critical thinker, he's the API and login
               master. Nothing will stop Adam from creating login routes and he
               WILL steal ur girl no questions asked.
             </Box>

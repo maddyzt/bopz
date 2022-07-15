@@ -1,9 +1,8 @@
-import { Fragment, useState } from 'react';
-import axios from 'axios'
-import PostList from './PostList';
+import { Fragment, useMemo, useState } from "react";
+import axios from "axios";
+import PostList from "./PostList";
 import "./Shazam.css";
-import { useEffect } from 'react';
-import $ from 'jquery';
+import { useEffect } from "react";
 
 const Shazam = () => {
   let postId = null;
@@ -16,52 +15,55 @@ const Shazam = () => {
 
   let newPosts = [];
 
-  const userObject = {
-    username: sessionStorage.getItem("user_name")
-  };
-
   // if (userObject.username) {
   //   setLoggedIn(true);
   // }
 
-  // get user data 
-  
-  const getUserData = (userObject) => {
-    axios.post('http://localhost:8080/feed/user', userObject)
-    .then((response) => {
-      console.log('getUserData response', response)
-      setUserData({
-        id: response.data.rows[0].id,
-        username: response.data.rows[0].username
-      })
-    })
-  }
+  // get user data
 
-  console.log('userData', userData);
+  const getUserData = (userObject) => {
+    axios
+      .post("http://localhost:8080/feed/user", userObject)
+      .then((response) => {
+        console.log("getUserData response", response);
+        if (response.data.rows[0]) {
+          setUserData({
+            id: response.data.rows[0].id,
+            username: response.data.rows[0].username,
+          });
+        }
+      });
+  };
+
+  console.log("userData", userData);
 
   useEffect(() => {
+    const userObject = {
+      username: sessionStorage.getItem("user_name"),
+    };
     getUserData(userObject);
   }, [posts]);
 
-
-
   useEffect(() => {
-      getPostsByUser(userObject);
+    const userObject = {
+      username: sessionStorage.getItem("user_name"),
+    };
+    getPostsByUser(userObject);
   }, []);
 
   // this function will take in a user parameter (object)
   const getPostsByUser = (userObject) => {
-    console.log('get posts by user')
-    axios.post('http://localhost:8080/feed/posts', userObject)
-    .then((response) => {
-      // existing posts is an array of posts
-      console.log('getpostsbyuser response data', response.data);
-      setExistingPosts(response.data.rows);
+    console.log("get posts by user");
+    axios
+      .post("http://localhost:8080/feed/posts", userObject)
+      .then((response) => {
+        // existing posts is an array of posts
+        console.log("getpostsbyuser response data", response.data);
+        setExistingPosts(response.data.rows);
+      });
+  };
 
-    })
-  }
-
-  console.log('existing posts', existingPosts);
+  console.log("existing posts", existingPosts);
 
   useEffect(() => {
     // target the listen/stop buttons
@@ -74,7 +76,7 @@ const Shazam = () => {
     // main block for doing the audio recording
     // check if user allows the app to record
     if (navigator.mediaDevices.getUserMedia) {
-      console.log('getUserMedia supported.');
+      console.log("getUserMedia supported.");
 
       // input has to be audio
       const constraints = { audio: true };
@@ -92,47 +94,43 @@ const Shazam = () => {
           console.log("recorder started");
           record.style.background = "red";
           record.style.border = "1px solid red";
-          document.getElementById("recButton").value="Listening...";
+          document.getElementById("recButton").value = "Listening...";
           // stop.disabled = false;
           record.disabled = true;
 
           const recordAudio = async () => {
-            console.log('recordAudio starting')
+            console.log("recordAudio starting");
             const recorder = new MediaRecorder(stream);
             const chunks = [];
-            recorder.ondataavailable = e => chunks.push(e.data);
-            recorder.onstop = async (e) => {        
+            recorder.ondataavailable = (e) => chunks.push(e.data);
+            recorder.onstop = async (e) => {
+              let data = await sendAudioFile(new Blob(chunks));
 
-            let data = await sendAudioFile(new Blob(chunks));
+              if (data.matches && data.matches.length !== 0) {
+                // mediaRecorder.stop();
+                record.disabled = false;
+                record.style.background = "";
+                record.style.color = "";
+                record.style.border = "#1CA2F1";
+                document.getElementById("recButton").value = "Start Bopping";
 
-            if (data.matches && data.matches.length !== 0) {
-              // mediaRecorder.stop();
-              record.disabled = false;
-              record.style.background = "";
-              record.style.color = "";
-              record.style.border = "#1CA2F1";
-              document.getElementById("recButton").value="Start Bopping";
-
-              console.log(mediaRecorder.state);
-              console.log("recorder stopped");
-              stopInterval();
-              await persistToDatabase(data);
-              return;
-            }
-          }
-            setTimeout(()=> recorder.stop(), 5000); // we'll have a 5s media file
+                console.log(mediaRecorder.state);
+                console.log("recorder stopped");
+                stopInterval();
+                await persistToDatabase(data);
+                return;
+              }
+            };
+            setTimeout(() => recorder.stop(), 5000); // we'll have a 5s media file
             recorder.start();
-          
-          }
+          };
 
           const interval = setInterval(recordAudio, 4000);
-          
-          const stopInterval = () => {
-            clearInterval(interval)
-          };
-          
 
-        }
+          const stopInterval = () => {
+            clearInterval(interval);
+          };
+        };
 
         // when stop is clicked, the media recorder stops listening and buttons are reset
         // stop.onclick = () => {
@@ -148,58 +146,57 @@ const Shazam = () => {
 
         // when stop is clicked, a new blob is created with the audio data
         // mediaRecorder.onstop = (e) => {
-          // const blob = new Blob(chunks, { 
-          //   'type': 'audio/mp3' 
-          // });
-          // // this function sends the audio data to the shazam api
-          // sendAudioFile(blob);
+        // const blob = new Blob(chunks, {
+        //   'type': 'audio/mp3'
+        // });
+        // // this function sends the audio data to the shazam api
+        // sendAudioFile(blob);
         // }
 
         // when data is available it is added to chunks
         // mediaRecorder.ondataavailable = function(e) {
         //   chunks.push(e.data);
         // }
-      }
+      };
 
       let onError = (err) => {
-        console.log('The following error occured: ' + err);
-      }
+        console.log("The following error occured: " + err);
+      };
 
       navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
-
     } else {
-      console.log('getUserMedia not supported on your browser!');
+      console.log("getUserMedia not supported on your browser!");
     }
   });
-
-
 
   // function to send audio to shazam api
   const sendAudioFile = async (file) => {
     const formData = new FormData();
-    formData.append('audio-file', file);
-    console.log('formdata', formData);
+    formData.append("audio-file", file);
+    console.log("formdata", formData);
     // public shazam api options
     const options = {
-      method: 'POST',
-      url: 'https://song-recognition.p.rapidapi.com/song/detect',
-      headers: formData.getHeaders ? formData.getHeaders () : {
-        'X-RapidAPI-Key': apiKey,
-        'X-RapidAPI-Host': 'song-recognition.p.rapidapi.com'
-      },
-      data: formData
+      method: "POST",
+      url: "https://song-recognition.p.rapidapi.com/song/detect",
+      headers: formData.getHeaders
+        ? formData.getHeaders()
+        : {
+            "X-RapidAPI-Key": apiKey,
+            "X-RapidAPI-Host": "song-recognition.p.rapidapi.com",
+          },
+      data: formData,
     };
-    console.log('sending audio file')
+    console.log("sending audio file");
     // axios request to the shazam api
-    
+
     let response = await axios.request(options);
-    console.log('shazam response', response);
+    console.log("shazam response", response);
     return response.data;
-  }
-    
-    const persistToDatabase = async (data) => {
-      console.log('persisting to database...')
-      try {
+  };
+
+  const persistToDatabase = async (data) => {
+    console.log("persisting to database...");
+    try {
       let post = {
         id: data.tagid,
         songURL: data.track.url,
@@ -210,45 +207,45 @@ const Shazam = () => {
         likes: 0,
         date: "Just now",
         coverArt: data.track.images.coverart,
-        albumName: data.track.sections[0].metadata[0].text
+        albumName: data.track.sections[0].metadata[0].text,
       };
       // add object to posts array
       newPosts = [...posts, post];
       // set posts state
-      setPosts(newPosts); 
+      setPosts(newPosts);
       // post to song endpoint
       await persistPost(post);
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-    }
-    
-    // function to post to song endpoint
-    const persistPost = (post) => {
-      axios.post('http://localhost:8080/feed/song', post)
-      .then((response) => {
-        postId = response.data.rows[0].id
-        console.log('post succesful and postId', postId)
-      })
-    };
+  };
+
+  // function to post to song endpoint
+  const persistPost = (post) => {
+    axios.post("http://localhost:8080/feed/song", post).then((response) => {
+      postId = response.data.rows[0].id;
+      console.log("post succesful and postId", postId);
+    });
+  };
 
   return (
     <div className="shazam-container">
-    <Fragment>
-      <div className="button-container">
-     <form>
-      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>     
-      {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
-      </form>
-      </div>
-    </Fragment>
-    <PostList 
-    posts={posts}
-    existingPosts={existingPosts}
-    />
+      <Fragment>
+        <div className="button-container">
+          <form>
+            <input
+              type="submit"
+              value="Start Bopping"
+              className="btn btn-primary mt-4 listen bop-btn"
+              id="recButton"
+            />
+            {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
+          </form>
+        </div>
+      </Fragment>
+      <PostList posts={posts} existingPosts={existingPosts} />
     </div>
-  )
-
-}
+  );
+};
 
 export default Shazam;

@@ -25,7 +25,6 @@
 
 /* #001142; */
 .bopz-nav {
-  top: 0;
   display: flex;
   position: relative;
   align-items: center;
@@ -77,19 +76,22 @@
   display: flex;
   align-items: center;
 }
+
 .nav-area a:hover {
   background: lightseagreen;
   border-radius: 25px;
-
 
 }
 
 .bopz-nav ul {
   display: flex;
-  flex-direction: row;
   margin: 0.5em;
 }
 
+.nav-area {
+  display: flex;
+  align-items: center;
+}
 .nav-link, .nav-link:link {
   color: white;
 }
@@ -102,10 +104,16 @@
 
 .log-button {
   margin-left: 25px;
-  margin-right: 25px;
+  margin-right: 30px;
+  flex-direction: row;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .username {
   color: salmon;
+  margin-left: 15px;
+  margin-top: 20px;
 }

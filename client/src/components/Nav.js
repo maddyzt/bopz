@@ -19,11 +19,8 @@ const Nav = (props) => {
 
       <SearchBar />
 
-      <ul>
-        <Link className="nav-link" to="/about">About Us</Link>
-        <Link className="nav-link" to={`/profile/${username}`}>Profile</Link>
+      <ul className="nav-area">
         <Login setLoggedIn={props.setLoggedIn}/>
-        {/* <Link className="nav-link" to="/login">Login</Link> */}
         <Logout />
       </ul>
 

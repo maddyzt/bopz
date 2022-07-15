@@ -10,10 +10,9 @@
 .user-profile-header {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid white;
-  border-radius: 4px; */
-  margin: 0.5em;
-  padding: 0.5em;
+  margin: 0.5em 2em;
+  padding: 0.5em 2em;
+  gap: 1em;
 }
 
 .name-location {
@@ -25,21 +24,14 @@
 .user-profile-main {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid white;
-  border-radius: 4px;
-  margin: 0.5em;
-  padding: 0.5em;
+  justify-content: flex-start;
+  gap: 5em;
+  border-bottom: 1px solid white;
+  margin: 0.5em 2em;
+  padding: 0.5em 2em 0.5em 3em;
+  padding-bottom: 2em;
 }
 
-/* .avatar {
-  display: inline-block;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-
-  object-fit: cover;
-} */
 
 #profileImage {
   width: 90px;

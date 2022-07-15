@@ -41,14 +41,15 @@ const Comments = () => {
     getComments();
   }, []);
 
+  
   return (
     <div className="comment-container">
       <h2>
       Comments
       </h2>
-      <article className="post-box">
+      <article className="comment-box">
       <header className="comment-header">
-        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser1}</span>
+        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser1}</span>
         <div className="comment-date">
         {comments.date1}
         </div>
@@ -58,9 +59,9 @@ const Comments = () => {
       </div>
       </article>
 
-      <article className="post-box">
+      <article className="comment-box">
       <header className="comment-header">
-        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser2}</span>
+        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser2}</span>
         <div className="comment-date">
         {comments.date2}
         </div>
@@ -70,9 +71,9 @@ const Comments = () => {
       </div>
       </article>
 
-      <article className="post-box">
+      <article className="comment-box">
       <header className="comment-header">
-        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser3}</span>
+        <span className="comment-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {comments.commentUser3}</span>
         <div className="comment-date">
         {comments.date3}
         </div>
@@ -83,8 +84,8 @@ const Comments = () => {
       </article>
 
       <div className="new-comment-container">
-      <input type="text" /> 
-      <button type="submit">Add Comment</button>
+      <input type="text" placeholder="Type something here..."/> 
+      <button type="submit">+</button>
       </div>
     </div>
   )

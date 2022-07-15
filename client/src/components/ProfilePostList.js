@@ -12,6 +12,8 @@ const ProfilePostList = (props) => {
       userId={existingPost.user_id}
       songId={existingPost.song_id}
       likes={existingPost.likes}
+      albumName={existingPost.album}
+      coverArt={existingPost.cover_art}
       />
     )
   })

@@ -2,8 +2,11 @@
   border: 1px solid white;
   color: white;
   border-radius: 4px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  margin-right: 2em;
+  margin-left: 2em;
   padding: 0.5em;
-  margin: 1em;
 }
 
 .icons {
@@ -34,21 +37,79 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
+  
+}
+
+.avatar-name-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
 
 .post-user {
   display: flex;
   justify-content: flex-start;
   gap: 0.5em;
+  transform: translate(0%, 50%);
 }
 
 .post {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-left: 1%;
   margin-right: 1%;
 }
+
+.search-button{
+  color: white;
+  text-decoration: none !important;
+}
+
+.search-button:hover{
+  color: #1CA2F1;
+  text-decoration: none;
+}
+
+.song-info {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  padding-top: 0.5em;
+}
+
+.song-link {
+  color: white;
+  text-decoration: none !important;
+}
+
+.song-link:hover {
+  color: #1CA2F1;
+  text-decoration: none;
+}
+
+.profile-link {
+  color: white;
+  text-decoration: none !important;
+}
+
+.profile-link:hover {
+  color: #1CA2F1;
+  text-decoration: none;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1CA2F1;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  margin: 0;
+}
+
 
 /* heart css */
 .content{
@@ -67,6 +128,10 @@
   height: 60px;
   width: 60px;
   transform: translate(30%,25%);
+}
+
+.heart:hover {
+  color: darkred;
 }
 
 .numb:before{

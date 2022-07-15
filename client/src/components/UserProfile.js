@@ -83,19 +83,18 @@ console.log('following: ', following, 'followers: ', followers);
     }
   }
 
-  $(function(){
-    let intial = $('#username').text().charAt(0);
-    let profileImage = $('#profileImage').text(intial);
-  });
+    let username = props.username;
+    let initial = username.charAt(0).toUpperCase();
+
 
   return (
     <div className="user-profile">
       <header className="user-profile-header">
-      <div id="profileImage"></div>
-      <div className="name-location">
-      <h1 id="username">{props.username}</h1>
-      <h5>{props.location}</h5>
-      </div>
+        <div id="profileImage">{initial}</div>
+        <div className="name-location">
+        <h1 id="username">{props.username}</h1>
+        <h5>{props.location}</h5>
+        </div>
       </header>
       <main className="user-profile-main">
       <div>Likes: {props.likes}</div>

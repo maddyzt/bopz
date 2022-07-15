@@ -1,30 +1,27 @@
-import { Fragment, useState } from 'react';
+import { React, Fragment, useState, useCallback } from 'react';
 import axios from 'axios'
 import PostList from './PostList';
 import "./Shazam.css";
 import { useEffect } from 'react';
+import $ from 'jquery';
 
-
-const Shazam = () => {
+const Shazam = (props) => {
   let postId = null;
   const apiKey = process.env.REACT_APP_API_KEY;
   // set states
   const [posts, setPosts] = useState([]);
   const [existingPosts, setExistingPosts] = useState([]);
   const [userData, setUserData] = useState({});
-  // const [loggedIn, setLoggedIn] = useState(false);
 
   let newPosts = [];
 
   const userObject = {
-    username: sessionStorage.getItem("user_name")
-  };
+    username: sessionStorage.getItem('user_name')
+  }
 
-  // if (userObject.username) {
-  //   setLoggedIn(true);
-  // }
-
-  // get user data 
+  useEffect(() => {
+    getPostsByUser(userObject);
+  }, [props.loggedIn]);
   
   const getUserData = (userObject) => {
     axios.post('http://localhost:8080/feed/user', userObject)
@@ -43,11 +40,6 @@ const Shazam = () => {
     getUserData(userObject);
   }, [posts]);
 
-
-
-  useEffect(() => {
-      getPostsByUser(userObject);
-  }, []);
 
   // this function will take in a user parameter (object)
   const getPostsByUser = (userObject) => {
@@ -91,7 +83,8 @@ const Shazam = () => {
           console.log(mediaRecorder.state);
           console.log("recorder started");
           record.style.background = "red";
-
+          record.style.border = "1px solid red";
+          document.getElementById("recButton").value="Listening...";
           // stop.disabled = false;
           record.disabled = true;
 
@@ -109,6 +102,9 @@ const Shazam = () => {
               record.disabled = false;
               record.style.background = "";
               record.style.color = "";
+              record.style.border = "#1CA2F1";
+              document.getElementById("recButton").value="Start Bopping";
+
               console.log(mediaRecorder.state);
               console.log("recorder stopped");
               stopInterval();
@@ -189,11 +185,12 @@ const Shazam = () => {
     // axios request to the shazam api
     
     let response = await axios.request(options);
-    console.log('response', response);
+    console.log('shazam response', response);
     return response.data;
   }
     
     const persistToDatabase = async (data) => {
+      console.log('persisting to database...')
       try {
       let post = {
         id: data.tagid,
@@ -203,7 +200,9 @@ const Shazam = () => {
         username: userData.username,
         userId: userData.id,
         likes: 0,
-        date: "Just now"
+        date: "Just now",
+        coverArt: data.track.images.coverart,
+        albumName: data.track.sections[0].metadata[0].text
       };
       // add object to posts array
       newPosts = [...posts, post];
@@ -211,12 +210,10 @@ const Shazam = () => {
       setPosts(newPosts); 
       // post to song endpoint
       await persistPost(post);
-
     } catch(err) {
       console.log(err)
     }
     }
-
     
     // function to post to song endpoint
     const persistPost = (post) => {
@@ -228,13 +225,12 @@ const Shazam = () => {
     };
 
 
-
   return (
     <div className="shazam-container">
     <Fragment>
       <div className="button-container">
      <form>
-      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" />     
+      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>     
       {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
       </form>
       </div>

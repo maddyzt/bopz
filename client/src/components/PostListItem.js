@@ -9,6 +9,17 @@ const PostListItem = (props) => {
   const [liked, updateLiked] = useState(false);
   const [date, setDate] = useState();
 
+  const getSearchString = (song, artist) => {
+    let newSongString = song.replace(/ /g,"%20");
+    let newArtistString = artist.replace(/ /g,"%20");
+    let searchURL = `https://open.spotify.com/search/${newSongString}%20${newArtistString}`;
+    return searchURL
+  }
+
+  let searchString = getSearchString(props.songName, props.songArtist);
+
+  let profileString = `http://localhost:3000/profile/${props.username}`;
+
   const post = {
     id: props.id,
     likes: likes
@@ -67,13 +78,26 @@ const PostListItem = (props) => {
     });
   });
 
+
+  let username = props.username;
+  let initial = username.charAt(0).toUpperCase();
+  
   return (
     <article className="post-box">
       <header className="post-header">
-        <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {props.username}</span>
+        <div className="avatar-name-container">
+        <div className="avatar">{initial}</div>
+        <a href={profileString} className="profile-link"><span className="post-user" id="username">{props.username}</span></a>
+        </div>
+        <a href={searchString} target="_blank" className="search-button">Listen on Spotify</a>
       </header>
       <div className="post">
-      {props.songName && props.songArtist && songString}
+      <div className="song-info">
+        {props.songName && props.songArtist && songString}
+      </div>
+      <div>
+      {props.albumName}
+      </div>
       </div>
       <footer className="post-footer">
         <div className="post-date">

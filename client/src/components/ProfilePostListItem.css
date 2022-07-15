@@ -1,0 +1,23 @@
+.profile-post-box {
+  border: 1px solid white;
+  color: white;
+  border-radius: 4px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+}
+
+.profile-post-user{
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5em;
+  transform: translate(0%, 30%);
+}
+
+.profile-avatar-post-container{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}

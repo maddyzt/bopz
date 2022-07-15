@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import "./PostListItem.css";
+import "./ProfilePostListItem.css";
 import $ from "jquery";
 
 const ProfilePostListItem = (props) => {
@@ -8,6 +9,15 @@ const ProfilePostListItem = (props) => {
   const [likes, setLikes] = useState(-1);
   const [liked, updateLiked] = useState(false);
   const [date, setDate] = useState();
+
+  const getSearchString = (song, artist) => {
+    let newSongString = song.replace(/ /g,"%20");
+    let newArtistString = artist.replace(/ /g,"%20");
+    let searchURL = `https://open.spotify.com/search/${newSongString}%20${newArtistString}`;
+    return searchURL
+  }
+
+  let searchString = getSearchString(props.songName, props.songArtist);
 
   const post = {
     id: props.id,
@@ -67,13 +77,26 @@ const ProfilePostListItem = (props) => {
     });
   });
 
+
+  let username = props.username;
+  let initial = username.charAt(0);
+
   return (
-  <article className="post-box">
+  <article className="profile-post-box">
     <header className="post-header">
-      <span className="post-user"><i id="smiley" className="fa-solid fa-face-grin-stars"></i> {props.username}</span>
+      <div className="profile-avatar-post-container">
+        <div className="avatar">{initial}</div>
+        <span className="profile-post-user">{props.username}</span>
+      </div>
+      <a href={searchString} target="_blank" className="search-button">Listen on Spotify</a>
     </header>
     <div className="post">
+    <div className="song-info">
     {props.songName && props.songArtist && songString}
+    </div>
+    <div>
+      {props.albumName}
+    </div>
     </div>
     <footer className="post-footer">
       <div className="post-date">

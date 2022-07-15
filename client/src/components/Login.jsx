@@ -2,13 +2,10 @@ import axios from 'axios';
 import { Fragment, useEffect, useState } from 'react';
 
 
-
-const Login = () => {
+const Login = (props) => {
 
   // Look for the query string (everything after '?' in URL)
   const code = new URLSearchParams(window.location.search).get("code");
-
-  const [loggedIn, setLoggedIn] = useState(false);
 
 
   const userInfo = () => {
@@ -24,7 +21,7 @@ const Login = () => {
         sessionStorage.setItem("user_name", res.data.body.display_name);
         // Save user's email to session storage
         sessionStorage.setItem("user_email", res.data.body.email);
-        setLoggedIn(true);
+        props.setLoggedIn(true);
       })
       .catch((err) => {
         console.log(err);
@@ -59,11 +56,11 @@ const Login = () => {
 
     }
 
-    if (loggedIn) {
+    if (props.loggedIn) {
       saveUser();
     }
 
-  }, [code, loggedIn]);
+  }, [code, props.loggedIn]);
 
   const change = () => {
     return axios
@@ -82,11 +79,9 @@ const Login = () => {
     <Fragment>
 
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
-      {(!sessionStorage.getItem("access_token" || !loggedIn)) &&
-      <button onClick={change} className="log-button"> Login to Spotify </button>}
+      {(!sessionStorage.getItem("access_token" || !props.loggedIn)) && <button onClick={change}> Login to Spotify </button>}
 
-      {(sessionStorage.getItem("access_token" || loggedIn)) &&
-      <li className='nav-link'> Logged in as: <p className="username">{sessionStorage.getItem("user_name")}</p> </li>}
+      {(sessionStorage.getItem("access_token" || props.loggedIn)) && <h5> Logged in as: {sessionStorage.getItem("user_name")} </h5>}
 
     </Fragment>
   );

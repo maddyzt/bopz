@@ -11,6 +11,8 @@ const PostList = (props) => {
       username={post.username}
       likes={post.likes}
       date={post.date}
+      coverArt={post.coverArt}
+      albumName={post.albumName}
       />
     )
   })
@@ -26,6 +28,8 @@ const PostList = (props) => {
       userId={existingPost.user_id}
       songId={existingPost.song_id}
       likes={existingPost.likes}
+      albumName={existingPost.album}
+      coverArt={existingPost.cover_art}
       />
     )
   })

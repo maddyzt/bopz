@@ -1,30 +1,27 @@
-import { Fragment, useState } from 'react';
+import { React, Fragment, useState, useCallback } from 'react';
 import axios from 'axios'
 import PostList from './PostList';
 import "./Shazam.css";
 import { useEffect } from 'react';
 import $ from 'jquery';
 
-const Shazam = () => {
+const Shazam = (props) => {
   let postId = null;
   const apiKey = process.env.REACT_APP_API_KEY;
   // set states
   const [posts, setPosts] = useState([]);
   const [existingPosts, setExistingPosts] = useState([]);
   const [userData, setUserData] = useState({});
-  // const [loggedIn, setLoggedIn] = useState(false);
 
   let newPosts = [];
 
   const userObject = {
-    username: sessionStorage.getItem("user_name")
-  };
+    username: sessionStorage.getItem('user_name')
+  }
 
-  // if (userObject.username) {
-  //   setLoggedIn(true);
-  // }
-
-  // get user data 
+  useEffect(() => {
+    getPostsByUser(userObject);
+  }, [props.loggedIn]);
   
   const getUserData = (userObject) => {
     axios.post('http://localhost:8080/feed/user', userObject)
@@ -43,11 +40,6 @@ const Shazam = () => {
     getUserData(userObject);
   }, [posts]);
 
-
-
-  useEffect(() => {
-      getPostsByUser(userObject);
-  }, []);
 
   // this function will take in a user parameter (object)
   const getPostsByUser = (userObject) => {
@@ -231,6 +223,7 @@ const Shazam = () => {
         console.log('post succesful and postId', postId)
       })
     };
+
 
   return (
     <div className="shazam-container">

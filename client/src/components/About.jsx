@@ -4,6 +4,7 @@ import "./About.css";
 import Box from "./Box";
 import Maddy from "./images/Maddy.png";
 import Eric from "./images/Eric.png";
+import Adam from "./images/Adam.jpg"
 
 const About = () => {
   return (
@@ -62,7 +63,7 @@ const About = () => {
             >
               <img
                 alt="Profile"
-                src="/components/images/purple-bird.png"
+                src={Adam}
                 style={{ width: 70 }}
               />
             </Box>

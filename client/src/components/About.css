@@ -1,0 +1,11 @@
+
+.About {
+  background-color: #001142;
+  font-family: "Lato";
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.AboutBoxes {
+  display: flex;
+}

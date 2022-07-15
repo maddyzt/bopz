@@ -2,7 +2,6 @@ import axios from "axios";
 import { Fragment, useEffect } from "react";
 
 const Login = (props) => {
-
   // Look for the query string (everything after '?' in URL)
   const code = new URLSearchParams(window.location.search).get("code");
 
@@ -85,20 +84,25 @@ const Login = (props) => {
 
   return (
     <Fragment>
-
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
-      {(!sessionStorage.getItem("access" || !props.loggedIn)) &&
-      <button className="log-button"onClick={change}> Login with Spotify </button>}
+      {(!sessionStorage.getItem("access" || !props.loggedIn)) && (
+        <button className="log-button"onClick={change}>
+          {" "}
+          Login with Spotify
+        </button>
+      )}
 
-      {(sessionStorage.getItem("access" || props.loggedIn)) &&
-      <span className="log-button"> Logged in as: <p className="username">{props.user?.name}</p> </span>}
+      {(sessionStorage.getItem("access" || props.loggedIn)) && (
+        <span className="log-button">
+          {" "}
+          Logged in as:{" "}
+          <p className="username">{props.user?.name}</p>{" "}
+        </span>)}
 
     </Fragment>
   );
-}
+};
 
 export default Login;
-
-
 
 // location.reload to refresh the page (use after logout --> delete the session storage)

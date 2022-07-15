@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./components/Profile";
 import About from "./components/About";
 import LoginPage from "./components/LoginPage";
+import RequireAuth from "./components/RequireAuth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

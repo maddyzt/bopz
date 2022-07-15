@@ -1,13 +1,87 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@1,600&display=swap'); */
+/* font-family: 'Bungee', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bungee&family=PT+Sans&family=Rubik+Moonrocks&family=Source+Sans+Pro:ital,wght@1,600&display=swap');
+/* font-family: 'Rubik Moonrocks', cursive; */
+
+
+
+/* DARKER COLORS */
+/* darkcyan */
+/* darkslateblue */
+/* indigo */
+/* slateblue */
+
+/* LIGHTER COLORS */
+/* lightseagreen */
+/* yellowgreen */
+/* steelblue */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* #001142; */
 .bopz-nav {
+  top: 0;
   display: flex;
+  position: relative;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #001142;
-  font-family: "Lato";
-  border-bottom: 1px solid white;
+  background-color: steelblue;
+  font-family: 'Rubik Moonrocks', cursive;
+  /* border-bottom: 1px solid white; */
   color: white;
   height: 7%;
   font-size: 18px;
+  width: 90%;
+  margin-left: 4%;
+  margin-top: 1.5%;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+
+  /* https://www.transparenttextures.com/patterns/cubes.png */
+  /* https://www.transparenttextures.com/patterns/diagmonds-light.png */
+  /* https://www.transparenttextures.com/patterns/diamond-upholstery.png */
+  /* https://www.transparenttextures.com/patterns/light-wool.png */
+  /* https://www.transparenttextures.com/patterns/starring.png */
+  /* https://www.transparenttextures.com/patterns/black-lozenge.png */
+}
+
+.bopz-nav:before {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  border-top: 10px solid steelblue;
+  border-right: 20px solid steelblue;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+
+.bopz-nav:after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  right: 0;
+  border-top: 10px solid steelblue;
+  border-left: 20px solid steelblue;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.bopz-nav-area {
+  display: flex;
+  align-items: center;
+}
+.nav-area a:hover {
+  background: lightseagreen;
+  border-radius: 25px;
+
+
 }
 
 .bopz-nav ul {
@@ -22,6 +96,16 @@
 
 
 .logo {
-  font-size: 24px;
+  font-size: 35px;
   margin: 0.5em;
+}
+
+.log-button {
+  margin-left: 25px;
+  margin-right: 25px;
+  border: none;
+}
+
+.username {
+  color: salmon;
 }

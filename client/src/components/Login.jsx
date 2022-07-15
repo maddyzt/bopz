@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Fragment, useEffect, useState } from 'react';
 
 
+
 const Login = () => {
 
   // Look for the query string (everything after '?' in URL)
@@ -81,9 +82,11 @@ const Login = () => {
     <Fragment>
 
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
-      {(!sessionStorage.getItem("access_token" || !loggedIn)) && <button onClick={change}> Login to Spotify </button>}
+      {(!sessionStorage.getItem("access_token" || !loggedIn)) &&
+      <button onClick={change} className="log-button"> Login to Spotify </button>}
 
-      {(sessionStorage.getItem("access_token" || loggedIn)) && <h5> Logged in as: {sessionStorage.getItem("user_name")} </h5>}
+      {(sessionStorage.getItem("access_token" || loggedIn)) &&
+      <li className='nav-link'> Logged in as: <p className="username">{sessionStorage.getItem("user_name")}</p> </li>}
 
     </Fragment>
   );

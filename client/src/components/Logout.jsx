@@ -1,4 +1,5 @@
 
+import "./Nav.css";
 const Logout = (props) => {
 
   const endSession = () => {
@@ -7,7 +8,7 @@ const Logout = (props) => {
   }
 
   return (
-    <button onClick={endSession}>
+    <button onClick={endSession} className="log-button">
       Logout
     </button>
   )

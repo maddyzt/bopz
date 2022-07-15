@@ -9,16 +9,21 @@ const Nav = () => {
   return (
     <nav className="bopz-nav">
       <div className="logo">
-        <Link className="nav-link" to="/">Bopz</Link>
+        <Link className="nav-link" to="/">BOPZ</Link>
       </div>
-      <SearchBar />
-      <ul>
-        <Link className="nav-link" to="/about">About Us</Link>
+
+      <ul className="nav-area">
         <Link className="nav-link" to={`/profile/${username}`}>Profile</Link>
+        <Link className="nav-link" to="/about">About Us</Link>
+      </ul>
+
+      <SearchBar />
+
+      <ul>
         <Login />
-        {/* <Link className="nav-link" to="/login">Login</Link> */}
         <Logout />
       </ul>
+
     </nav>
   )
 

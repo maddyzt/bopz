@@ -11,7 +11,7 @@ const SearchBar = () => {
     return axios
       .get(`/profile/${searchUser}`)
       .then((res)=> {
-        // Redirect to the specified user's profile 
+        // Redirect to the specified user's profile
         window.location.href =`/profile/${searchUser}`
       })
       .catch((err) => {

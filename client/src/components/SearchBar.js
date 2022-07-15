@@ -29,7 +29,8 @@ const SearchBar = () => {
       </input>
 
       <button type="submit" className="search_button" >
-        <img src="https://cdn-icons-png.flaticon.com/512/61/61088.png" className="search_bar_image"/>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        {/* <img src="https://cdn-icons-png.flaticon.com/512/61/61088.png" className="search_bar_image"/> */}
       </button>
     </form>
   );

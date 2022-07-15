@@ -1,4 +1,5 @@
 .search_bar {
+  font-family: "Lato";
   width: 50%;
   max-width: 25%;
   background-color: rgba(255, 255, 255, 0.2);
@@ -19,6 +20,7 @@
   border-radius: 30px;
   padding-left: 5%;
   color: white;
+  font-size: 15px;
 }
 
 ::placeholder {
@@ -27,12 +29,13 @@
 
 .search_button {
   cursor: pointer;
+  border: none;
   /* background-color: red; */
-  width: 15%;
-  border-radius: 30px;
-  width: 10%;
+  /* width: 15%; */
+  /* border-radius: 50; */
+  /* width: 10%;
   height: 50%;
-  background: white
+  background: white */ 
 }
 
 .search_bar_image {

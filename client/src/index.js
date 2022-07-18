@@ -14,8 +14,24 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="profile/:id" element={<Profile />} />
-      <Route path="about" element={<About />} />
+      <Route
+        path="profile/:id"
+        element={
+          <RequireAuth>
+            {" "}
+            <Profile />{" "}
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="about"
+        element={
+          <RequireAuth>
+            {" "}
+            <About />{" "}
+          </RequireAuth>
+        }
+      />
       <Route path="loginpage" element={<LoginPage />} />
     </Routes>
   </BrowserRouter>

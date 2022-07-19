@@ -94,7 +94,7 @@ const Shazam = (props) => {
           console.log("recorder started");
           record.style.background = "red";
           record.style.border = "1px solid red";
-          document.getElementById("recButton").value="Listening...";
+          document.getElementById("recButton").textContent = 'Listening...';
           // stop.disabled = false;
           record.disabled = true;
 

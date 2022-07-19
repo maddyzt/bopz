@@ -116,7 +116,7 @@ const Shazam = (props) => {
               record.style.background = "";
               record.style.color = "";
               record.style.border = "#1CA2F1";
-              document.getElementById("recButton").value="Start Bopping";
+              document.getElementById("recButton").textContent = "Start Bopping";
 
               console.log(mediaRecorder.state);
               console.log("recorder stopped");

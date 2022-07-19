@@ -95,17 +95,22 @@ console.log('following: ', following, 'followers: ', followers);
       <h1 id="username">{props.username}</h1>
       <h5>{props.location}</h5>
       </div>
-      </header>
-      <main className="user-profile-main">
-      <div>Likes: {props.likes}</div>
-      <div>Following: {following}</div>
-      <div>Followers: {followers}</div>
-      {/* {id === userObject.myUsername ? <div></div> : */}
       {id === userObject.myUsername ? <div></div> :  
       followedStatus ? 
       <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
       <button className="follow-button" onClick={updateFollow}>Follow</button>
       }
+      </header>
+      <main className="user-profile-main">
+      <div><strong>Likes:</strong> {props.likes}</div>
+      <div><strong>Following:</strong> {following}</div>
+      <div><strong>Followers:</strong> {followers}</div>
+      {/* {id === userObject.myUsername ? <div></div> : */}
+      {/* {id === userObject.myUsername ? <div></div> :  
+      followedStatus ? 
+      <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
+      <button className="follow-button" onClick={updateFollow}>Follow</button>
+      } */}
       </main>
     </div>
   )

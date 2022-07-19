@@ -22,6 +22,11 @@
   color: white;
   font-size: 15px;
 }
+.search_input:focus {
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
 
 ::placeholder {
   color: white;

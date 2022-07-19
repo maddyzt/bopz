@@ -10,11 +10,11 @@ const UserProfile = (props) => {
 
   const { id } = useParams();
   console.log('useParams id', id); 
-  let isSameUser;
+
 
   // if (id === sessionStorage.getItem("user_name") )
   let userObject = {
-    myUsername: sessionStorage.getItem("user_name"),
+    myUsername: props.myUsername,
     friendUsername: id
   }
 

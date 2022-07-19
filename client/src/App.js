@@ -1,9 +1,15 @@
 import "./App.css";
-import Shazam from "./components/Shazam";
-import Nav from "./components/Nav";
-import { Outlet } from "react-router-dom";
+
+import HomePage from "./components/HomePage";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./components/Profile";
+import About from "./components/About";
+import LoginPage from "./components/LoginPage";
+import RequireAuth from "./components/RequireAuth";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,18 +46,40 @@ function App() {
   }, [user]);
 
   return (
-    <div className="App">
-      <Nav
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={ 
+        <HomePage
         setLoggedIn={setLoggedIn}
         loggedIn={loggedIn}
         setToken={setToken}
         token={token}
         user={user}
         setUser={setUser}
+        /> } 
       />
-      <Shazam user={user} setUser={setUser} loggedIn={loggedIn}/>
-      <Outlet />
-    </div>
+      <Route
+        path="profile/:id"
+        element={
+          <RequireAuth>
+            {" "}
+            <Profile user={user}/>{" "}
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="about"
+        element={
+          // <RequireAuth>
+ 
+            <About />
+          // </RequireAuth>
+        }
+      />
+      <Route path="loginpage" element={<LoginPage />} />
+    </Routes>
+  </BrowserRouter>
+
   );
 }
 

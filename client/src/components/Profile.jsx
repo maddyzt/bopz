@@ -8,7 +8,7 @@ import ProfilePostList from './ProfilePostList';
 import Comments from './Comments';
 import "./Profile.css";
 
-const Profile = () => {
+const Profile = (props) => {
   const [existingPosts, setExistingPosts] = useState([]);
   const [likesData, setLikesData] = useState({});
   const { id } = useParams();
@@ -57,11 +57,13 @@ const Profile = () => {
   
   return (
     <Fragment>
-    <Nav />
+    <Nav 
+    user={props.user}/>
     <div className="profile">
 
       <UserProfile 
       username={username}
+      myUsername={props.user?.name}
       likes={likes}
       location={location}
       />

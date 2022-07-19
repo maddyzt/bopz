@@ -11,9 +11,17 @@
 }
 
 .bop-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
   background-color: #1CA2F1;
-  border-color: #1CA2F1;
-  margin: 2em 1em 0.5em;
+  border: 1px solid #1CA2F1;
+  border-radius: 30px;
+  margin: 1em 1em 0.5em;
   font-size: 24px;
+  height: 60px;
+  width: 220px;
 }
 

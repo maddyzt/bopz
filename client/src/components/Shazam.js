@@ -245,7 +245,10 @@ const Shazam = (props) => {
     <Fragment>
       <div className="button-container">
      <form>
-      <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/>
+      {/* <input type="submit" value="Start Bopping" className="btn btn-primary mt-4 listen bop-btn" id="recButton"/> */}
+      <button type="submit" className="listen bop-btn" id="recButton">
+        Start Bopping <i class="fa-solid fa-microphone"></i>
+      </button>
       {/* <input type="submit" value="Send Song" className="btn btn-primary mt-4 stop bop-btn" />      */}
       </form>
       </div>

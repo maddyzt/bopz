@@ -26,10 +26,10 @@ root.render(
       <Route
         path="about"
         element={
-          <RequireAuth>
-            {" "}
-            <About />{" "}
-          </RequireAuth>
+          // <RequireAuth>
+ 
+            <About />
+          // </RequireAuth>
         }
       />
       <Route path="loginpage" element={<LoginPage />} />

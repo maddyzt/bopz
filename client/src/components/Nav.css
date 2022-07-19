@@ -19,6 +19,8 @@
 
 .nav-container {
   background-color: #001142;
+  display: flex;
+  justify-content: center;
 }
 * {
   margin: 0;
@@ -33,17 +35,23 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  background-color: steelblue;
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: #2196d9;
+  /* background-color: #005b90; */
+  /* background-color: steelblue; */
   /* font-family: 'Rubik Moonrocks', cursive; */
   font-family: 'Bungee', cursive;
   /* border-bottom: 1px solid white; */
   color: white;
   height: 7%;
   font-size: 18px;
-  width: 90%;
-  margin-left: 4%;
+  width: 100%;
+  margin-left: 3%;
+  margin-right: 3%;
   margin-top: 1.5%;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  /* background-image: url("https://www.transparenttextures.com/patterns/cubes.png"); */
+  background-image: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
 
   /* https://www.transparenttextures.com/patterns/cubes.png */
   /* https://www.transparenttextures.com/patterns/diagmonds-light.png */
@@ -53,13 +61,13 @@
   /* https://www.transparenttextures.com/patterns/black-lozenge.png */
 }
 
-.bopz-nav:before {
+/* .bopz-nav:before {
   position: absolute;
   content: "";
   top: 100%;
   left: 0;
-  border-top: 10px solid steelblue;
-  border-right: 20px solid steelblue;
+  border-top: 10px solid #7791a5;
+  border-right: 20px solid #7791a5;
   border-left: 15px solid transparent;
   border-bottom: 15px solid transparent;
 }
@@ -70,11 +78,11 @@
   content: "";
   top: 100%;
   right: 0;
-  border-top: 10px solid steelblue;
-  border-left: 20px solid steelblue;
+  border-top: 10px solid #7791a5;
+  border-left: 20px solid #7791a5;
   border-right: 15px solid transparent;
   border-bottom: 15px solid transparent;
-}
+} */
 
 .bopz-nav-area {
   display: flex;

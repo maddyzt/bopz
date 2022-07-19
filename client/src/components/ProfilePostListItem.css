@@ -13,7 +13,7 @@
   display: flex;
   justify-content: flex-start;
   gap: 0.5em;
-  transform: translate(0%, 30%);
+  /* transform: translate(0%, 30%); */
 }
 
 .profile-avatar-post-container{

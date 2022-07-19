@@ -1,5 +1,7 @@
 
 .About {
+  display: flex;
+  flex-direction: column;
   background-color: #001142;
   font-family: "Lato";
   margin: 0 auto;
@@ -8,4 +10,9 @@
 
 .AboutBoxes {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2em;
+  margin-left: 3%;
+  margin-right: 3%;
 }

@@ -11,8 +11,8 @@ const LoginPage = () => {
         <NavForLoginPage />
         <Box
           alignItems="center"
-          backgroundColor="#333"
-          border="4px solid lightskyblue"
+          backgroundColor="#001142"
+          border="2px solid white"
           borderRadius={4}
           color="#eee"
           display="flex"
@@ -20,13 +20,14 @@ const LoginPage = () => {
           minHeight={250}
           padding={20}
           width={350}
+          textAlign="center"
         >
-          <Box fontFamily="Helvetica" fontSize="1.4rem" padding="10px 0">
+          <Box fontFamily="Lato" fontSize="1.4rem" padding="10px 0" fontWeight="700">
             Welcome to Bopz!
           </Box>
-          <Box fontFamily="Helvetica" fontWeight={350}>
+          <Box fontFamily="Lato" fontWeight="400">
             Bopz is a shazam impersonator with social features. Please login
-            with your spotify account below to continue.
+            with your Spotify account below to continue.
           </Box>
           <br></br>
           <Login />

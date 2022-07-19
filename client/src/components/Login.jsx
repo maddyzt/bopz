@@ -86,14 +86,14 @@ const Login = (props) => {
     <Fragment>
       {/* // Check if user is logged in (based on session storage), displays login message accordingly */}
       {(!sessionStorage.getItem("access" || !props.loggedIn)) && (
-        <button className="log-button"onClick={change}>
+        <button className="log-button" onClick={change}>
           {" "}
-          Login with Spotify
+          Login with Spotify <i class="fa-brands fa-spotify"></i>
         </button>
       )}
 
       {(sessionStorage.getItem("access" || props.loggedIn)) && (
-        <span className="log-button">
+        <span className="log-button-logged-in">
           {" "}
           Logged in as:{" "}
           <p className="username">{props.user?.name}</p>{" "}

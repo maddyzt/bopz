@@ -15,28 +15,28 @@ const About = () => {
           <Box
             alignItems="center"
             backgroundColor="#333"
-            border="4px solid lightskyblue"
+            border="2px solid lightskyblue"
             borderRadius={4}
             color="#eee"
             display="flex"
             margin="50px auto auto auto"
-            minHeight={250}
+            minHeight={300}
             padding={20}
             width={350}
           >
             <Box
               width={80}
-              border="4px solid lightskyblue"
+              border="2px solid lightskyblue"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"
             >
-              <img alt="Profile" src={Maddy} style={{ width: 70 }} />
+              <img alt="Profile" src={Maddy} style={{ width: 80, height: 80 }} />
             </Box>
-            <Box fontFamily="Helvetica" fontSize="1.4rem" padding="10px 0">
-              Maddy Tan (NYU grad)
+            <Box fontFamily="Lato" fontSize="1.4rem" padding="10px 0" fontWeight="700"> 
+              Maddy Tan (NYU Grad)
             </Box>
-            <Box fontFamily="Helvetica" fontWeight={350}>
+            <Box fontFamily="Lato" fontWeight={350}>
               Maddy is a fierce, intense, competitive developer. She lets
               nothing stop her and WILL outwork you!
             </Box>
@@ -44,28 +44,28 @@ const About = () => {
           <Box
             // alignItems="flex-start"
             backgroundColor="#333"
-            border="4px solid lightskyblue"
+            border="2px solid lightskyblue"
             borderRadius={4}
             color="#eee"
             display="flex"
             margin="50px auto auto auto"
-            minHeight={250}
+            minHeight={300}
             padding={20}
             width={350}
           >
             <Box
               width={80}
-              border="4px solid lightskyblue"
+              border="2px solid lightskyblue"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"
             >
-              <img alt="Profile" src={Adam} style={{ width: 70 }} />
+              <img alt="Profile" src={Adam} style={{ width: 80, height: 80 }} />
             </Box>
-            <Box fontFamily="Helvetica" fontSize="1.4rem" padding="10px 0">
-              Adam Yiu (UTSC grad)
+            <Box fontFamily="Lato" fontSize="1.4rem" padding="10px 0" fontWeight="700">
+              Adam Yiu (UTSC Grad)
             </Box>
-            <Box fontFamily="Helvetica" fontWeight={350}>
+            <Box fontFamily="Lato" fontWeight={350}>
               Adam is a next level critical thinker, he's the API and login
               master. Nothing will stop Adam from creating login routes and he
               WILL find a way!
@@ -74,30 +74,30 @@ const About = () => {
           <Box
             // alignItems="flex-start"
             backgroundColor="#333"
-            border="4px solid lightskyblue"
+            border="2px solid lightskyblue"
             borderRadius={4}
             color="#eee"
             display="flex"
             margin="50px auto auto auto"
-            minHeight={250}
+            minHeight={300}
             padding={20}
             width={350}
           >
             <Box
               width={80}
-              border="4px solid lightskyblue"
+              border="2px solid lightskyblue"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"
             >
-              <img alt="Profile" src={Eric} style={{ width: 70 }} />
+              <img alt="Profile" src={Eric} style={{ width: 80, height: 80 }} />
             </Box>
-            <Box fontFamily="Helvetica" fontSize="1.4rem" padding="10px 0">
-              Eric Duncan (uWaterloo grad)
+            <Box fontFamily="Lato" fontSize="1.4rem" padding="10px 0" fontWeight="700">
+              Eric Duncan (uWaterloo Grad)
             </Box>
-            <Box fontFamily="Helvetica" fontWeight={350}>
+            <Box fontFamily="Lato" fontWeight={350}>
               Eric is usually a personality hire but does know a thing or two
-              about front end development!
+              about front-end development!
             </Box>
           </Box>
         </div>

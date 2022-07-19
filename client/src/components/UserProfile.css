@@ -50,5 +50,8 @@
   border-radius: 4px;
   background-color: #1CA2F1;
   color: white;
+  width: 80px;
+  height: 35px;
+  transform: translate(0%, -20%);
 }
 

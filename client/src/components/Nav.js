@@ -8,6 +8,7 @@ const Nav = (props) => {
   let username = props.user?.name;
 
   return (
+    <div className="nav-container">
     <nav className="bopz-nav">
       <div className="logo">
         <Link className="nav-link" to="/">BOPZ</Link>
@@ -33,6 +34,7 @@ const Nav = (props) => {
       </ul>
 
     </nav>
+    </div>
   );
 };
 

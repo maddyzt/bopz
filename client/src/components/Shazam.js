@@ -105,9 +105,12 @@ const Shazam = (props) => {
             recorder.ondataavailable = e => chunks.push(e.data);
             recorder.onstop = async (e) => {
 
+            console.log('line before send audio file blob');
             let data = await sendAudioFile(new Blob(chunks));
 
             if (data.matches && data.matches.length !== 0) {
+              stopInterval();
+              console.log('interval stopped')
               // mediaRecorder.stop();
               record.disabled = false;
               record.style.background = "";
@@ -117,7 +120,7 @@ const Shazam = (props) => {
 
               console.log(mediaRecorder.state);
               console.log("recorder stopped");
-              stopInterval();
+              console.log('persisttodatabase called in record audio function')
               await persistToDatabase(data);
               return;
             }
@@ -177,6 +180,7 @@ const Shazam = (props) => {
 
 
   // function to send audio to shazam api
+  console.log('line befor send audio file definition');
   const sendAudioFile = async (file) => {
     const formData = new FormData();
     formData.append('audio-file', file);
@@ -219,7 +223,8 @@ const Shazam = (props) => {
       // set posts state
       setPosts(newPosts);
       // post to song endpoint
-      await persistPost(post);
+      // await persistPost(post);
+      persistPost(post);
     } catch(err) {
       console.log(err)
     }

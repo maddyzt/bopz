@@ -60,7 +60,7 @@ const PostListItem = (props) => {
   const getDate = () => {
     axios.post('http://localhost:8080/feed/date', post)
     .then((response) => {
-      console.log('getDate', response);
+      // console.log('getDate', response);
       setDate(response.data.rows[0].created_at);
     })
   }

@@ -17,11 +17,13 @@
 /* yellowgreen */
 /* steelblue */
 
+.nav-container {
+  background-color: #001142;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #001142;
 }
 
 /* #001142; */

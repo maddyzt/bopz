@@ -52,7 +52,7 @@ const Comments = () => {
       </h2>
       <article className="comment-box">
       <header className="comment-header">
-        <span className="comment-user"><div className="avatar">P</div> {comments.commentUser1}</span>
+        <span className="comment-user"><div className="avatar">E</div> {comments.commentUser1}</span>
         <div className="comment-date">
         {comments.date1}
         </div>
@@ -64,7 +64,7 @@ const Comments = () => {
 
       <article className="comment-box">
       <header className="comment-header">
-        <span className="comment-user"><div className="avatar">P</div> {comments.commentUser2}</span>
+        <span className="comment-user"><div className="avatar">H</div> {comments.commentUser2}</span>
         <div className="comment-date">
         {comments.date2}
         </div>

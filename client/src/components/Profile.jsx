@@ -52,7 +52,7 @@ const Profile = () => {
   const location = "Toronto, CA";
 
 
-
+  
 
   
   return (
@@ -69,7 +69,7 @@ const Profile = () => {
     <div className="recent-bopz">
       <h2> Recent Bopz </h2>
       <ProfilePostList 
-      existingPosts={existingPosts}
+      existingPosts={existingPosts.reverse()}
       />
     </div>
     </div>

@@ -49,7 +49,7 @@ function App() {
         user={user}
         setUser={setUser}
       />
-      <Shazam loggedIn={loggedIn}/>
+      <Shazam user={user} setUser={setUser} loggedIn={loggedIn}/>
       <Outlet />
     </div>
   );

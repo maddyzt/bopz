@@ -3,9 +3,10 @@ import axios from 'axios'
 import PostList from './PostList';
 import "./Shazam.css";
 import { useEffect } from 'react';
-import $ from 'jquery';
 
 const Shazam = (props) => {
+  // console.log('props user', props.user);
+  // console.log('session username', sessionStorage.getItem("user_name"))
   let postId = null;
   const apiKey = process.env.REACT_APP_API_KEY;
   // set states
@@ -15,15 +16,19 @@ const Shazam = (props) => {
 
   let newPosts = [];
 
-  const userObject = {
-    username: sessionStorage.getItem('user_name')
-  }
+  // const userObject = {
+  //   username: sessionStorage.getItem("user_name")
+  // }
 
   useEffect(() => {
+    const userObject = {
+      username: props.user?.name
+    }  
     getPostsByUser(userObject);
   }, [props.loggedIn]);
 
   const getUserData = (userObject) => {
+    console.log('userObject for get userdata function', userObject)
     axios.post('http://localhost:8080/feed/user', userObject)
     .then((response) => {
       console.log('getUserData response', response)
@@ -37,13 +42,18 @@ const Shazam = (props) => {
   console.log('userData', userData);
 
   useEffect(() => {
+    const userObject = {
+      username: props.user?.name
+    }  
     getUserData(userObject);
-  }, [posts]);
+  }, [posts, props.loggedIn]);
 
 
   // this function will take in a user parameter (object)
   const getPostsByUser = (userObject) => {
     console.log('get posts by user')
+    console.log('userObject for get posts by user function', userObject)
+
     axios.post('http://localhost:8080/feed/posts', userObject)
     .then((response) => {
       // existing posts is an array of posts

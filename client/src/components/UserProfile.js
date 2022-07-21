@@ -11,7 +11,7 @@ const UserProfile = (props) => {
   const { id } = useParams();
   console.log('useParams id', id); 
 
-
+  // console.log('props.mysername', props.myUsername)
   // if (id === sessionStorage.getItem("user_name") )
   let userObject = {
     myUsername: props.myUsername,
@@ -34,7 +34,7 @@ const UserProfile = (props) => {
   console.log('after followedstatus api call and update', followedStatus)
   useEffect(() => {
     getFollowedStatus(userObject)
-  }, [followedStatus]);
+  }, [followedStatus, followData]);
 
 
   const getFollowCounts = () => {

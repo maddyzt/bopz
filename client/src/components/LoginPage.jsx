@@ -11,7 +11,7 @@ const LoginPage = () => {
         <NavForLoginPage />
         <Box
           alignItems="center"
-          backgroundColor="#001142"
+          backgroundColor="rgba(255, 255, 255, 0.1)"
           border="2px solid white"
           borderRadius={4}
           color="#eee"

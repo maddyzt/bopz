@@ -14,8 +14,8 @@ const About = () => {
         <div className="AboutBoxes">
           <Box
             alignItems="center"
-            backgroundColor="#333"
-            border="2px solid lightskyblue"
+            backgroundColor="rgba(255, 255, 255, 0.1)"
+            border="1px solid white"
             borderRadius={4}
             color="#eee"
             display="flex"
@@ -26,7 +26,7 @@ const About = () => {
           >
             <Box
               width={80}
-              border="2px solid lightskyblue"
+              border="1px solid white"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"
@@ -43,8 +43,8 @@ const About = () => {
           </Box>
           <Box
             // alignItems="flex-start"
-            backgroundColor="#333"
-            border="2px solid lightskyblue"
+            backgroundColor="rgba(255, 255, 255, 0.1)"
+            border="1px solid white"
             borderRadius={4}
             color="#eee"
             display="flex"
@@ -55,7 +55,7 @@ const About = () => {
           >
             <Box
               width={80}
-              border="2px solid lightskyblue"
+              border="1px solid white"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"
@@ -73,8 +73,8 @@ const About = () => {
           </Box>
           <Box
             // alignItems="flex-start"
-            backgroundColor="#333"
-            border="2px solid lightskyblue"
+            backgroundColor="rgba(255, 255, 255, 0.1)"
+            border="1px solid white"
             borderRadius={4}
             color="#eee"
             display="flex"
@@ -85,7 +85,7 @@ const About = () => {
           >
             <Box
               width={80}
-              border="2px solid lightskyblue"
+              border="1px solid white"
               backgroundColor="#fff"
               borderRadius="50%"
               overflow="hidden"

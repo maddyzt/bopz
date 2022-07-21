@@ -20,7 +20,7 @@ const ProfilePostList = (props) => {
 
   return (
     <div>
-      {existingPosts}
+      {existingPosts.reverse()}
     </div>
   )
 }

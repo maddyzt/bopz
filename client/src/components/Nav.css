@@ -222,5 +222,6 @@
 
 .nav-link-about, .nav-link-about:link {
   color: white;
+  font-family: "Lato";
   margin-right: 2em;
 }

@@ -53,6 +53,7 @@ router.post("/followed", (req, res) => {
   })
 
   router.post('/follow/status', (req, res) => {
+    console.log('follow status usernames', req.body);
     let myUsername = req.body.myUsername;
     let friendUsername = req.body.friendUsername;
     queryParams = [myUsername, friendUsername];
@@ -61,6 +62,7 @@ router.post("/followed", (req, res) => {
       id FROM users WHERE username = $2);`
     db.query(queryString, queryParams)
     .then (data => {
+      console.log('follow status data', data)
       res.json(data);
     })
   })

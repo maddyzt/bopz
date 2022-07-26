@@ -2,17 +2,13 @@ import "./UserProfile.css";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-import $ from 'jquery';
 
 const UserProfile = (props) => {
   const [followedStatus, updateFollowedStatus] = useState();
   const [followData, setFollowData] = useState({});
 
   const { id } = useParams();
-  console.log('useParams id', id); 
 
-  // console.log('props.mysername', props.myUsername)
-  // if (id === sessionStorage.getItem("user_name") )
   let userObject = {
     myUsername: props.myUsername,
     friendUsername: id
@@ -21,8 +17,6 @@ const UserProfile = (props) => {
   const getFollowedStatus = (userObject) => {
     axios.post('http://localhost:8080/profile/follow/status', userObject)
     .then(response => {
-      console.log('getFollowedStatus', response);
-
       if (response.data.rows[0]) {
         updateFollowedStatus(true);
       } else {
@@ -31,7 +25,6 @@ const UserProfile = (props) => {
     })
   };
 
-  console.log('after followedstatus api call and update', followedStatus)
   useEffect(() => {
     getFollowedStatus(userObject)
   }, [followedStatus, followData]);
@@ -62,7 +55,6 @@ const UserProfile = (props) => {
   let followers = followData.followed_count;
 
 
-console.log('following: ', following, 'followers: ', followers);
   
   const updateFollow = () => {
     if (!followedStatus) {
@@ -105,12 +97,6 @@ console.log('following: ', following, 'followers: ', followers);
       <div><strong>Likes:</strong> {props.likes}</div>
       <div><strong>Following:</strong> {following}</div>
       <div><strong>Followers:</strong> {followers}</div>
-      {/* {id === userObject.myUsername ? <div></div> : */}
-      {/* {id === userObject.myUsername ? <div></div> :  
-      followedStatus ? 
-      <button className="follow-button" onClick={updateFollow}>Unfollow</button> : 
-      <button className="follow-button" onClick={updateFollow}>Follow</button>
-      } */}
       </main>
     </div>
   )

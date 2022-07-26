@@ -4,6 +4,7 @@ import "./PostListItem.css";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+// comments are hardcoded for now, new comment inactive
 const Comments = () => {
   const [comments, setComments] = useState({});
   const { id } = useParams();

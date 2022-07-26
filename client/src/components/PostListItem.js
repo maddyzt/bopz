@@ -28,9 +28,7 @@ const PostListItem = (props) => {
   const dbLikes = () => {
     axios.post('http://localhost:8080/feed/likes', post)
     .then((response) => {
-      console.log('dblikes response', response);
       setLikes(response.data.rows[0].likes);
-      console.log('after setting likes initially', likes)
     })
   }
 
@@ -40,8 +38,6 @@ const PostListItem = (props) => {
 
   const updateLikes = async () => {
    try {
-    console.log('update likes post', post)
-    console.log('liked', liked);
     liked ? post.likes += 1 : post.likes -= 1;
     await axios.post('http://localhost:8080/feed/likes/update', post);
     setLikes(likes => likes + (liked ? 1 : -1));
@@ -60,7 +56,6 @@ const PostListItem = (props) => {
   const getDate = () => {
     axios.post('http://localhost:8080/feed/date', post)
     .then((response) => {
-      // console.log('getDate', response);
       setDate(response.data.rows[0].created_at);
     })
   }

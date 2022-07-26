@@ -3,11 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Profile from "./components/Profile";
-// import About from "./components/About";
-// import LoginPage from "./components/LoginPage";
-// import RequireAuth from "./components/RequireAuth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

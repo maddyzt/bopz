@@ -1,7 +1,5 @@
 import "./App.css";
-
 import HomePage from "./components/HomePage";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
